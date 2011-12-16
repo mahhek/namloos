@@ -58,6 +58,9 @@ def seed_users
 end
 
 def seed_extension
+  exts = Extension.all
+  exts.each{ |e| e.destroy } unless exts.nil?
+
   Extension.create(:name => "2001")
   Extension.create(:name => "2002")
   Extension.create(:name => "2003")
