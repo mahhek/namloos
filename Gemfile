@@ -8,7 +8,7 @@ gem 'rails', '3.1.0.rc8'
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"
 #gem 'sass-rails'
-#gem 'coffee-script'
+gem 'coffee-script'
 gem 'uglifier'
 gem 'devise'
 gem 'jquery-rails'
