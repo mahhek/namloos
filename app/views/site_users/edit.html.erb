@@ -12,17 +12,18 @@
   <p><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %></p>
 
-  <p><%= "Group" %><br />
-    <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name",:selected => @user.groups.blank? ? '' :@user.groups.first.id) %>
-  </p>
+  <% if is_admin? %>
+    <p><%= "Group" %><br />
+      <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name",:selected => @user.groups.blank? ? '' :@user.groups.first.id) %>
+    </p>
 
-  <p><%= f.label :extension %><br />
-    <%= select_tag "extension", options_from_collection_for_select(@extensions, "id", "name",:selected => @user.extensions.blank? ? '' :@user.extensions.first.id) %>
-  </p>
-
-  <p><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></p>
-
+    <p><b>Extensions</b>
+      <% @extensions.each do|e| %>
+        <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false %>
+        <b><%= e.name %></b>
+      <% end %>
+    </p>
+  <% end %>
   <p><%= f.submit "Update" %></p>
 <% end %>
 

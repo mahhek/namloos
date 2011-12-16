@@ -15,9 +15,11 @@
     <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name") %>
   </p>
 
-  <p><%= f.label :extension %><br />
-    <%= select_tag "extension", options_from_collection_for_select(@extensions, "id", "name") %>
-  </p>
-
+  <p><b>Extensions</b>
+  <% @extensions.each do|e| %>
+      <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false %>
+      <%= e.name %>
+    <% end %>
+</p>
   <p><%= f.submit "Sign up" %></p>
 <% end %>

@@ -13,7 +13,7 @@
     <td><%= privilege.name %></td>
     <td><%= link_to 'Show', privilege %></td>
     <td><%= link_to 'Edit', edit_privilege_path(privilege) %></td>
-    <td><%= link_to 'Destroy', privilege, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', privilege, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

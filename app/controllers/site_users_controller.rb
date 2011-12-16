@@ -25,8 +25,14 @@ class SiteUsersController < ApplicationController
     else
       success = @user && @user.save
     end
-    @user.groups << Group.find(params[:role])
-    @user.extensions << Extension.find(params[:extension])
+    unless params[:role].blank? && !params[:extensions].blank?
+      @user.groups << Group.find(params[:role])
+    
+      params[:extensions].each do|e|
+        extension = Extension.find_by_name(e)
+        @user.extensions << extension
+      end
+    end
     if success && @user.errors.empty?
       redirect_to('/')
       flash[:notice] = "User created successfully"
@@ -60,14 +66,19 @@ class SiteUsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     if @user && @user.update_attributes(params[:user])
-      @user.groups.delete_all
-      @user.extensions.delete_all
+      if !params[:role].blank? && !params[:extensions].blank?
+        @user.groups.delete_all
+        @user.extensions.delete_all
       
-      groups = Group.find(params[:role])
-      @user.groups << groups
-      extensions = Extension.find(params[:extension])
-      @user.extensions << extensions
-      
+        groups = Group.find(params[:role])
+        @user.groups << groups
+
+        params[:extensions].each do|e|
+          extension = Extension.find_by_name(e)
+          @user.extensions << extension
+        end
+      end
+          
       flash[:notice] = "User updated successfully!"
       redirect_to "/site_users"
     else
@@ -86,7 +97,7 @@ class SiteUsersController < ApplicationController
       else
         flash[:error] = "User can't be deleted please try again or later!"
       end
-      redirect_to "/users"
+      redirect_to "/site_users"
     end
   end
 
