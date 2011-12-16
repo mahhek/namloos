@@ -3,17 +3,21 @@
 <%= form_for @user, :url => "/site_users/create" do |f| %>
   <%#= f.error_messages %>
   <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+    <%= f.email_field :email %></p>
 
-<p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <p><%= f.label :password %><br />
+    <%= f.password_field :password %></p>
 
-<p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></p>
 
-<p><%= f.label :Group %><br />
-  <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name") %>
-</p>
+  <p><%= f.label :group %><br />
+    <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name") %>
+  </p>
 
-<p><%= f.submit "Sign up" %></p>
+  <p><%= f.label :extension %><br />
+    <%= select_tag "extension", options_from_collection_for_select(@extensions, "id", "name") %>
+  </p>
+
+  <p><%= f.submit "Sign up" %></p>
 <% end %>

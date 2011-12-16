@@ -57,6 +57,16 @@ def seed_users
   end
 end
 
-seed_privileges()
-seed_groups()
-seed_users()
+def seed_extension
+  Extension.create(:name => "2001")
+  Extension.create(:name => "2002")
+  Extension.create(:name => "2003")
+  Extension.create(:name => "2004")
+  Extension.create(:name => "2005")
+  Extension.create(:name => "2006")
+end
+
+seed_privileges
+seed_groups
+seed_users
+seed_extension

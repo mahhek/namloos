@@ -13,6 +13,7 @@ class SiteUsersController < ApplicationController
   def new
     @user = User.new
     @groups = Group.all
+    @extensions = Extension.all
   end
 
   def create
@@ -25,16 +26,20 @@ class SiteUsersController < ApplicationController
       success = @user && @user.save
     end
     @user.groups << Group.find(params[:role])
+    @user.extensions << Extension.find(params[:extension])
     if success && @user.errors.empty?
       redirect_to('/')
       flash[:notice] = "User created successfully"
     else
+      @extensions = Extension.all
+      @groups = Group.all
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again."
       render :action => 'new'
     end
   end
 
   def edit
+    @extensions = Extension.all
     @groups = Group.all
     if is_admin?
       @user = User.find(params[:id])
@@ -56,13 +61,18 @@ class SiteUsersController < ApplicationController
     end
     if @user && @user.update_attributes(params[:user])
       @user.groups.delete_all
+      @user.extensions.delete_all
       
-      group = Group.find(params[:role])
-      @user.groups << group
+      groups = Group.find(params[:role])
+      @user.groups << groups
+      extensions = Extension.find(params[:extension])
+      @user.extensions << extensions
       
       flash[:notice] = "User updated successfully!"
       redirect_to "/site_users"
     else
+      @extensions = Extension.all
+      @groups = Group.all
       flash[:notice] = "User can't be updated. Please try again or later."
       render :action => "edit"
     end

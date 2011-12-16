@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :groups , :through => :group_user
 
   has_many :privilege_user
-  has_many :privileges , :through => :privilege_user
+  has_many :extensions , :through => :privilege_user
+
+  has_many :extension_user
+  has_many :extensions , :through => :extension_user
 
 end
