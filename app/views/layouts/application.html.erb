@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Namloos</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= flash[:notice] %>
+    <%= flash[:error] %>
+
+    <div style="clear:both;float: left;width:100%;">
+      <% unless current_user.blank? %>
+        <div style="float: left;width:100%;clear: both;">
+          <div style="float: left;margin: 10px;">
+            Welcome!
+            <%= current_user.email %>
+          </div>
+
+          <div style="float: left;margin: 10px;">
+            <%= link_to "Log Out", "/sign_out" %>
+          </div>
+        </div>
+
+        <br />
+        <div style="float: left;margin: 10px;">
+          <% if is_admin? %>
+            <%= link_to "Users", site_users_path %> |
+            <%= link_to "Groups", groups_path %> |
+            <%= link_to "Privileges", privileges_path %>
+          <% else %>
+            <%= link_to "Edit Profile", edit_site_user_path(current_user) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= yield %>
+
+  </body>
+</html>
