@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  country_id: 1
+  apply_to_id: 1
+  region_id: 1
+  prefix_id: 1
+  callgroup_id: 1
+  start_rate: MyString
+  call_defination_id: 1
+  rate_per_minute: MyString
+  end_rate: MyString
+  call_per_second: MyString
+
+two:
+  country_id: 1
+  apply_to_id: 1
+  region_id: 1
+  prefix_id: 1
+  callgroup_id: 1
+  start_rate: MyString
+  call_defination_id: 1
+  rate_per_minute: MyString
+  end_rate: MyString
+  call_per_second: MyString

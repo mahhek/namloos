@@ -1,0 +1,23 @@
+<h1>Call Groups</h1>
+
+<table>
+  
+    <h3>Names:</h3>
+    <th></th>
+    <th></th>
+    <th></th>
+  
+
+<% @callgroups.each do |callgroup| %>
+  <tr>
+    <td><%= callgroup.name %></td>
+    <td><%= link_to 'Show', callgroup %></td>
+    <td><%= link_to 'Edit', edit_callgroup_path(callgroup) %></td>
+    <td><%= link_to 'Destroy', callgroup, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Callgroup', new_callgroup_path %>

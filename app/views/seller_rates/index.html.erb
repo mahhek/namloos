@@ -1,0 +1,41 @@
+<h1>Seller Rates</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Apply to</th>
+    <th>Region</th>
+    <th>Prefix</th>
+    <th>Callgroup</th>
+    <th>Start Rate</th>
+    <th>End Rate</th>
+    <th>Call defination</th>
+    <th>Rate per minute</th>
+    <th>Call/Secs</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @seller_rates.each do |seller_rate| %>
+    <tr>
+      <td><%= seller_rate.country.name %></td>
+      <td><%= seller_rate.apply_to.name %></td>
+      <td><%= seller_rate.region.name %></td>
+      <td><%= seller_rate.prefix.name %></td>
+      <td><%= seller_rate.callgroup.name %></td>
+      <td><%= seller_rate.start_rate %></td>
+      <td><%= seller_rate.end_rate %></td>
+      <td><%= seller_rate.call_defination.name %></td>
+      <td><%= seller_rate.rate_per_minute %></td>
+      <td><%= seller_rate.call_per_second %></td>
+      <td><%= link_to 'Show', seller_rate %></td>
+      <td><%= link_to 'Edit', edit_seller_rate_path(seller_rate) %></td>
+      <td><%= link_to 'Destroy', seller_rate, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seller rate', new_seller_rate_path %>

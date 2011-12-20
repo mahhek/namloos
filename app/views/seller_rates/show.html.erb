@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+<h3>Seller Rate</h3>
+<p>
+  <b>Country:</b>
+  <%= @seller_rate.country.name %>
+</p>
+
+<p>
+  <b>Apply to:</b>
+  <%= @seller_rate.apply_to.name %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @seller_rate.region.name %>
+</p>
+
+<p>
+  <b>Prefix:</b>
+  <%= @seller_rate.prefix.name %>
+</p>
+
+<p>
+  <b>Callgroup:</b>
+  <%= @seller_rate.callgroup.name %>
+</p>
+
+<p>
+  <b>Start rate:</b>
+  <%= @seller_rate.start_rate %>
+</p>
+
+<p>
+  <b>End rate:</b>
+  <%= @seller_rate.end_rate %>
+</p>
+
+<p>
+  <b>Call defination:</b>
+  <%= @seller_rate.call_defination.name %>
+</p>
+
+<p>
+  <b>Rate per minute:</b>
+  <%= @seller_rate.rate_per_minute %>
+</p>
+
+<p>
+  <b>Call per second:</b>
+  <%= @seller_rate.call_per_second %>
+</p>
+
+
+<%= link_to 'Edit', edit_seller_rate_path(@seller_rate) %> |
+<%= link_to 'Back', seller_rates_path %>

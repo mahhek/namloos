@@ -1,4 +1,18 @@
 Namloos::Application.routes.draw do
+  resources :seller_rates
+
+  resources :call_definations
+
+  resources :callgroups
+
+  resources :prefixes
+
+  resources :regions
+
+  resources :apply_tos
+
+  resources :countries
+
   resources :privileges
   resources :groups
   resources :site_users

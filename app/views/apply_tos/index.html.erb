@@ -1,0 +1,23 @@
+<h1>Applies To</h1>
+
+<table>
+
+  <h3>Name:</h3>
+  <th></th>
+  <th></th>
+  <th></th>
+
+
+  <% @apply_tos.each do |apply_to| %>
+    <tr>
+      <td><%= apply_to.name %></td>
+      <td><%= link_to 'Show', apply_to %></td>
+      <td><%= link_to 'Edit', edit_apply_to_path(apply_to) %></td>
+      <td><%= link_to 'Destroy', apply_to, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Apply to', new_apply_to_path %>

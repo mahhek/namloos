@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216190615) do
+ActiveRecord::Schema.define(:version => 20111220121550) do
+
+  create_table "apply_tos", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "call_definations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "callgroups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "extension_users", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +63,12 @@ ActiveRecord::Schema.define(:version => 20111216190615) do
     t.datetime "updated_at"
   end
 
+  create_table "prefixes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "privilege_users", :force => true do |t|
     t.integer  "user_id"
     t.integer  "privilege_id"
@@ -48,6 +78,27 @@ ActiveRecord::Schema.define(:version => 20111216190615) do
 
   create_table "privileges", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seller_rates", :force => true do |t|
+    t.integer  "country_id"
+    t.integer  "apply_to_id"
+    t.integer  "region_id"
+    t.integer  "prefix_id"
+    t.integer  "callgroup_id"
+    t.string   "start_rate",         :default => "0"
+    t.integer  "call_defination_id"
+    t.string   "rate_per_minute",    :default => "1"
+    t.string   "end_rate",           :default => "0"
+    t.string   "call_per_second",    :default => "1"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

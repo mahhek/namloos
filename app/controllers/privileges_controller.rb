@@ -1,4 +1,5 @@
 class PrivilegesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /privileges
   # GET /privileges.json
   def index
