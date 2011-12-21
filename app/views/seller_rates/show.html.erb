@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h3>Seller Rate</h3>
+<h2>Seller Rate</h2>
 <p>
   <b>Country:</b>
   <%= @seller_rate.country.name %>
@@ -41,7 +41,7 @@
 </p>
 
 <p>
-  <b>Rate per minute:</b>
+  <b>Rate/min.</b>
   <%= @seller_rate.rate_per_minute %>
 </p>
 
@@ -52,4 +52,5 @@
 
 
 <%= link_to 'Edit', edit_seller_rate_path(@seller_rate) %> |
-<%= link_to 'Back', seller_rates_path %>
+<%= link_to 'Back', seller_rates_path %> |
+<%= link_to 'Add', new_seller_rate_path %>

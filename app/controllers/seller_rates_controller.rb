@@ -26,12 +26,7 @@ class SellerRatesController < ApplicationController
   # GET /seller_rates/new.json
   def new
     @seller_rate = SellerRate.new
-    @countries = Country.all
-    @apply_tos = ApplyTo.all
-    @regions   = Region.all
-    @prefixes  = Prefix.all
-    @call_groups = Callgroup.all
-    @call_definations = CallDefination.all
+    load_data
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,12 +36,7 @@ class SellerRatesController < ApplicationController
 
   # GET /seller_rates/1/edit
   def edit
-    @countries = Country.all
-    @apply_tos = ApplyTo.all
-    @regions   = Region.all
-    @prefixes  = Prefix.all
-    @call_groups = Callgroup.all
-    @call_definations = CallDefination.all
+    load_data
     @seller_rate = SellerRate.find(params[:id])
   end
 
@@ -59,7 +49,8 @@ class SellerRatesController < ApplicationController
       if @seller_rate.save
         format.html { redirect_to @seller_rate, notice: 'Seller rate was successfully created.' }
         format.json { render json: @seller_rate, status: :created, location: @seller_rate }
-      else
+      else       
+        load_data
         format.html { render action: "new" }
         format.json { render json: @seller_rate.errors, status: :unprocessable_entity }
       end
@@ -76,12 +67,7 @@ class SellerRatesController < ApplicationController
         format.html { redirect_to @seller_rate, notice: 'Seller rate was successfully updated.' }
         format.json { head :ok }
       else
-        @countries = Country.all
-        @apply_tos = ApplyTo.all
-        @regions   = Region.all
-        @prefixes  = Prefix.all
-        @call_groups = Callgroup.all
-        @call_definations = CallDefination.all
+        load_data
         format.html { render action: "edit" }
         format.json { render json: @seller_rate.errors, status: :unprocessable_entity }
       end
@@ -99,4 +85,15 @@ class SellerRatesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+  private
+  def load_data
+    @countries = Country.all
+    @apply_tos = ApplyTo.all
+    @regions   = Region.all
+    @prefixes  = Prefix.all
+    @call_groups = Callgroup.all
+    @call_definations = CallDefination.all
+  end       
 end
