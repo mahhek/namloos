@@ -20,6 +20,7 @@ gem 'therubyracer'
 gem "cancan"
 gem "bcrypt-ruby"
 gem "heroku"
+gem "taps"
 #gem 'devise', :git => "http://github.com/plataformatec/devise.git"
 
 
