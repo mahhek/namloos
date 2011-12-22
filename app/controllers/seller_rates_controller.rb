@@ -78,8 +78,10 @@ class SellerRatesController < ApplicationController
   # DELETE /seller_rates/1.json
   def destroy
     @seller_rate = SellerRate.find(params[:id])
+
     @seller_rate.destroy
-    
+    flash[:notice] = "Seller Rates deleted successfully!"
+
     respond_to do |format|
       format.html { redirect_to seller_rates_url }
       format.json { head :ok }

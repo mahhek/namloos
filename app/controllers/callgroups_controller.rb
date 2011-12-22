@@ -77,7 +77,7 @@ class CallgroupsController < ApplicationController
     @callgroup = Callgroup.find(params[:id])
 
     if @callgroup.seller_rates.count > 0
-      flash[:notice] = "Call group cannot be deleted, It has some seller rates against it!"
+      flash[:error] = "Call group cannot be deleted, It has some seller rates against it!"
     else
       @callgroup.destroy
       flash[:notice] = "Call group deleted successfully!"

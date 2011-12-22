@@ -53,7 +53,7 @@ class SiteUsersController < ApplicationController
       if params[:id].to_i == current_user.id.to_i        
         @user = User.find(params[:id])
       else
-        flash[:notice] = "You don't have access to this user."
+        flash[:error] = "You don't have access to this user."
         redirect_to "/"
       end
     end
@@ -84,7 +84,7 @@ class SiteUsersController < ApplicationController
     else
       @extensions = Extension.all
       @groups = Group.all
-      flash[:notice] = "User can't be updated. Please try again or later."
+      flash[:error] = "User can't be updated. Please try again or later."
       render :action => "edit"
     end
   end

@@ -76,7 +76,7 @@ class RegionsController < ApplicationController
   def destroy
     @region = Region.find(params[:id])
     if @region.seller_rates.count > 0
-      flash[:notice] = "Region cannot be deleted, It has some seller rates against it!"
+      flash[:error] = "Region cannot be deleted, It has some seller rates against it!"
     else
       @region.destroy
       flash[:notice] = "Region deleted successfully!"

@@ -76,7 +76,7 @@ class CallDefinationsController < ApplicationController
   def destroy
     @call_defination = CallDefination.find(params[:id])
     if @call_defination.seller_rates.count > 0
-      flash[:notice] = "Call definition cannot be deleted, It has some seller rates against it!"
+      flash[:error] = "Call definition cannot be deleted, It has some seller rates against it!"
     else
       @call_defination.destroy
       flash[:notice] = "Call definition deleted successfully!"

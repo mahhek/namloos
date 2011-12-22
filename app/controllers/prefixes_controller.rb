@@ -76,7 +76,7 @@ class PrefixesController < ApplicationController
   def destroy
     @prefix = Prefix.find(params[:id])
     if @prefix.seller_rates.count > 0
-      flash[:notice] = "Prefix cannot be deleted, It has some seller rates against it!"
+      flash[:error] = "Prefix cannot be deleted, It has some seller rates against it!"
     else
       @prefix.destroy
       flash[:notice] = "Prefix deleted successfully!"

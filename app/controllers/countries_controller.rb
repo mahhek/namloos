@@ -75,7 +75,7 @@ class CountriesController < ApplicationController
   def destroy
     @country = Country.find(params[:id])
       if @country.seller_rates.count > 0
-        flash[:notice] = "Country cannot be deleted, It has some seller rates against it!"
+        flash[:error] = "Country cannot be deleted, It has some seller rates against it!"
       else
         @country.destroy
         flash[:notice] = "Country is deleted Successfully!"
