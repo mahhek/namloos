@@ -7,9 +7,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= flash[:notice] %>
-    <%= flash[:error] %>
-
+    <div style="width: 100%;float: left;color: green;">
+      <%= flash[:notice] %>
+      <%= flash[:error] %>
+    </div>
     <div style="clear:both;float: left;width:100%;">
       <% unless current_user.blank? %>
         <div style="float: left;width:100%;clear: both;">

@@ -75,7 +75,13 @@ class CallgroupsController < ApplicationController
   # DELETE /callgroups/1.json
   def destroy
     @callgroup = Callgroup.find(params[:id])
-    @callgroup.destroy
+
+    if @callgroup.seller_rates.count > 0
+      flash[:notice] = "Call group cannot be deleted, It has some seller rates against it!"
+    else
+      @callgroup.destroy
+      flash[:notice] = "Call group deleted successfully!"
+    end    
 
     respond_to do |format|
       format.html { redirect_to callgroups_url }

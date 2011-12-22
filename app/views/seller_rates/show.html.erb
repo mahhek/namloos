@@ -12,7 +12,7 @@
 
 <p>
   <b>Region:</b>
-  <%= @seller_rate.region.name %>
+  <%= @seller_rate.region.name unless @seller_rate.region.blank?%>
 </p>
 
 <p>

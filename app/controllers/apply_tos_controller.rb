@@ -74,8 +74,13 @@ class ApplyTosController < ApplicationController
   # DELETE /apply_tos/1.json
   def destroy
     @apply_to = ApplyTo.find(params[:id])
-    @apply_to.destroy
-
+    
+    if @apply_to.seller_rates.count > 0
+      flash[:notice] = "Apply To  cannot be deleted, It has some seller rates against it!"
+    else
+      @apply_to.destroy
+      flash[:notice] = "Apply To is deleted Successfully!"      
+    end
     respond_to do |format|
       format.html { redirect_to apply_tos_url }
       format.json { head :ok }

@@ -21,7 +21,7 @@
     <tr>
       <td><%= seller_rate.country.name %></td>
       <td><%= seller_rate.apply_to.name %></td>
-      <td><%= seller_rate.region.name %></td>
+      <td><%= seller_rate.region.name unless seller_rate.region.blank?%></td>
       <td><%= seller_rate.prefix.name %></td>
       <td><%= seller_rate.callgroup.name %></td>
       <td><%= seller_rate.start_rate %></td>

@@ -75,8 +75,13 @@ class RegionsController < ApplicationController
   # DELETE /regions/1.json
   def destroy
     @region = Region.find(params[:id])
-    @region.destroy
-
+    if @region.seller_rates.count > 0
+      flash[:notice] = "Region cannot be deleted, It has some seller rates against it!"
+    else
+      @region.destroy
+      flash[:notice] = "Region deleted successfully!"
+    end
+ 
     respond_to do |format|
       format.html { redirect_to regions_url }
       format.json { head :ok }

@@ -75,8 +75,13 @@ class PrefixesController < ApplicationController
   # DELETE /prefixes/1.json
   def destroy
     @prefix = Prefix.find(params[:id])
-    @prefix.destroy
-
+    if @prefix.seller_rates.count > 0
+      flash[:notice] = "Prefix cannot be deleted, It has some seller rates against it!"
+    else
+      @prefix.destroy
+      flash[:notice] = "Prefix deleted successfully!"
+    end
+ 
     respond_to do |format|
       format.html { redirect_to prefixes_url }
       format.json { head :ok }

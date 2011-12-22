@@ -75,7 +75,12 @@ class CallDefinationsController < ApplicationController
   # DELETE /call_definations/1.json
   def destroy
     @call_defination = CallDefination.find(params[:id])
-    @call_defination.destroy
+    if @call_defination.seller_rates.count > 0
+      flash[:notice] = "Call definition cannot be deleted, It has some seller rates against it!"
+    else
+      @call_defination.destroy
+      flash[:notice] = "Call definition deleted successfully!"
+    end 
 
     respond_to do |format|
       format.html { redirect_to call_definations_url }

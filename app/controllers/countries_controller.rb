@@ -74,8 +74,12 @@ class CountriesController < ApplicationController
   # DELETE /countries/1.json
   def destroy
     @country = Country.find(params[:id])
-    @country.destroy
-
+      if @country.seller_rates.count > 0
+        flash[:notice] = "Country cannot be deleted, It has some seller rates against it!"
+      else
+        @country.destroy
+        flash[:notice] = "Country is deleted Successfully!"
+      end
     respond_to do |format|
       format.html { redirect_to countries_url }
       format.json { head :ok }
