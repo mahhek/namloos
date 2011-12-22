@@ -1,7 +1,17 @@
 <h2>Change User</h2>
 
 <%= form_for(@user, :url => "/site_users/update/#{@user.id}", :html => { :method => :post }) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this seller_rate from being saved:</h2>
 
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <p><%= f.label :email %><br />
     <%= f.email_field :email %></p>

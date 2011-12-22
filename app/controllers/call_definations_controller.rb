@@ -27,7 +27,7 @@ class CallDefinationsController < ApplicationController
   # GET /call_definations/new.json
   def new
     @call_defination = CallDefination.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @call_defination }
@@ -36,6 +36,7 @@ class CallDefinationsController < ApplicationController
 
   # GET /call_definations/1/edit
   def edit
+    load_data
     @call_defination = CallDefination.find(params[:id])
   end
 
@@ -43,7 +44,7 @@ class CallDefinationsController < ApplicationController
   # POST /call_definations.json
   def create
     @call_defination = CallDefination.new(params[:call_defination])
-
+    
     respond_to do |format|
       if @call_defination.save
         format.html { redirect_to @call_defination, notice: 'Call defination was successfully created.' }
@@ -59,7 +60,7 @@ class CallDefinationsController < ApplicationController
   # PUT /call_definations/1.json
   def update
     @call_defination = CallDefination.find(params[:id])
-
+    
     respond_to do |format|
       if @call_defination.update_attributes(params[:call_defination])
         format.html { redirect_to @call_defination, notice: 'Call defination was successfully updated.' }
@@ -87,4 +88,4 @@ class CallDefinationsController < ApplicationController
       format.json { head :ok }
     end
   end
-end
+ end

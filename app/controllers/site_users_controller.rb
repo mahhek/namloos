@@ -19,18 +19,21 @@ class SiteUsersController < ApplicationController
   def create
     logout_keeping_session! unless is_admin?
     @user = User.new(params[:user])
-    if is_admin?
-      @user.update_attribute("confirmed_at",Time.now)
-      success = true
-    else
-      success = @user && @user.save
-    end
-    unless params[:role].blank? && !params[:extensions].blank?
-      @user.groups << Group.find(params[:role])
+    if @user.valid?
+      if is_admin?
+        @user.update_attribute("confirmed_at",Time.now)
+        success = true
+      else
+        success = @user && @user.save
+      end
+      unless params[:role].blank? && !params[:extensions].blank?
+        @user.groups << Group.find(params[:role])
     
-      params[:extensions].each do|e|
-        extension = Extension.find_by_name(e)
-        @user.extensions << extension
+        params[:extensions].each do|e|
+          extension = Extension.find_by_name(e)
+          @user.extensions << extension
+        end
+
       end
     end
     if success && @user.errors.empty?
@@ -39,7 +42,7 @@ class SiteUsersController < ApplicationController
     else
       @extensions = Extension.all
       @groups = Group.all
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again."
+      #      flash[:error]  = "We couldn't set up that account, sorry.  Please try again."
       render :action => 'new'
     end
   end
@@ -49,8 +52,8 @@ class SiteUsersController < ApplicationController
     @groups = Group.all
     if is_admin?
       @user = User.find(params[:id])
-    else      
-      if params[:id].to_i == current_user.id.to_i        
+    else
+      if params[:id].to_i == current_user.id.to_i
         @user = User.find(params[:id])
       else
         flash[:error] = "You don't have access to this user."
@@ -59,28 +62,34 @@ class SiteUsersController < ApplicationController
     end
   end
 
-  def update    
+  def update
     @user = User.find(params[:id])
     if params[:user][:password].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-    if @user && @user.update_attributes(params[:user])
-      if !params[:role].blank? && !params[:extensions].blank?
-        @user.groups.delete_all
-        @user.extensions.delete_all
+    if @user.valid?
+      if @user && @user.update_attributes(params[:user])
+        if !params[:role].blank? && !params[:extensions].blank?
+          @user.groups.delete_all
+          @user.extensions.delete_all
       
-        groups = Group.find(params[:role])
-        @user.groups << groups
+          groups = Group.find(params[:role])
+          @user.groups << groups
 
-        params[:extensions].each do|e|
-          extension = Extension.find_by_name(e)
-          @user.extensions << extension
-        end
+          params[:extensions].each do|e|
+            extension = Extension.find_by_name(e)
+            @user.extensions << extension
+          end
+        end          
+        flash[:notice] = "User updated successfully!"
+        redirect_to "/site_users"
+      else
+        @extensions = Extension.all
+        @groups = Group.all
+        flash[:error] = "User can't be updated. Please try again or later."
+        render :action => "edit"
       end
-          
-      flash[:notice] = "User updated successfully!"
-      redirect_to "/site_users"
     else
       @extensions = Extension.all
       @groups = Group.all

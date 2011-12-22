@@ -1,7 +1,18 @@
 <%= "Register for Namloos" %>
 
 <%= form_for @user, :url => "/site_users/create" do |f| %>
-  <%#= f.error_messages %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this seller_rate from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p><%= f.label :email %><br />
     <%= f.email_field :email %></p>
 
@@ -16,10 +27,10 @@
   </p>
 
   <p><b>Extensions</b>
-  <% @extensions.each do|e| %>
+    <% @extensions.each do|e| %>
       <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false %>
       <%= e.name %>
     <% end %>
-</p>
+  </p>
   <p><%= f.submit "Sign up" %></p>
 <% end %>

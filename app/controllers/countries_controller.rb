@@ -40,6 +40,7 @@ class CountriesController < ApplicationController
 
   # POST /countries
   # POST /countries.json
+
   def create
     @country = Country.new(params[:country])
 
