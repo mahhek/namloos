@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Namloos</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="blue wide_screen">
+    <div style="width: 100%;float: left;color: green">
+      <%= flash[:notice] %>
+    </div>
+    <div style="width: 100%;float: left;color: red">
+      <%= flash[:error] %>
+    </div>
+
+    <%= yield %>
+
+  </body>
+</html>
