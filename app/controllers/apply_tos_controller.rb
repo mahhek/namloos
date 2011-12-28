@@ -1,4 +1,5 @@
 class ApplyTosController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
   # GET /apply_tos
   # GET /apply_tos.json

@@ -1,8 +1,8 @@
-<h1>Applies To</h1>
+<h3>Applies To</h3>
+<table width="650" class="datatable">
 
-<table>
-
-  <h3>Name:</h3>
+  
+  <th>Name:</th>
   <th></th>
   <th></th>
   <th></th>
@@ -10,7 +10,7 @@
 
   <% @apply_tos.each do |apply_to| %>
     <tr>
-      <td><%= apply_to.name %></td>
+      <td width="500"><%= apply_to.name %></td>
       <td><%= link_to 'Show', apply_to %></td>
       <td><%= link_to 'Edit', edit_apply_to_path(apply_to) %></td>
       <td><%= link_to 'Destroy', apply_to, confirm: 'Are you sure?', method: :delete %></td>

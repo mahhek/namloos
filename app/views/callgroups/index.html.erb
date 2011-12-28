@@ -1,8 +1,8 @@
-<h1>Call Groups</h1>
+<h3>Call Groups</h3>
 
-<table>
+<table width="650" class="datatable">
   
-    <h3>Names:</h3>
+    <th>Names:</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @callgroups.each do |callgroup| %>
   <tr>
-    <td><%= callgroup.name %></td>
+    <td width="500"><%= callgroup.name %></td>
     <td><%= link_to 'Show', callgroup %></td>
     <td><%= link_to 'Edit', edit_callgroup_path(callgroup) %></td>
     <td><%= link_to 'Destroy', callgroup, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,13 +1,16 @@
+<h3>Users</h3>
 
-<h1>Users</h1>
+<table width="650" class="datatable">
 
-<table>
-  
-  <h3>Email</h3>
+  <th>Email</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
     
 <% @users.each do |site_user| %>
   <tr>
-    <td><%= site_user.email %></td>
+    <td width="400"><%= site_user.email %></td>
     <td><%= link_to 'Show', "/site_users/show/#{site_user.id}" %></td>
     <td><%= link_to 'Edit', edit_site_user_path(site_user) %></td>
     <td><%= link_to 'Destroy', "site_users/destroy/#{site_user.id}", :confirm => 'Are you sure?', :method => :delete %></td>

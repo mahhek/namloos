@@ -1,8 +1,8 @@
-<h1>Prefixes</h1>
+<h3>Prefixes</h3>
 
-<table>
+<table width="650" class="datatable">
   
-    <h3>Codes:</h3>
+    <th>Codes:</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @prefixes.each do |prefix| %>
   <tr>
-    <td><%= prefix.name %></td>
+    <td width="500"><%= prefix.name %></td>
     <td><%= link_to 'Show', prefix %></td>
     <td><%= link_to 'Edit', edit_prefix_path(prefix) %></td>
     <td><%= link_to 'Destroy', prefix, confirm: 'Are you sure?', method: :delete %></td>

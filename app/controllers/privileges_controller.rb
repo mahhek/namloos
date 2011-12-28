@@ -1,4 +1,5 @@
 class PrivilegesController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
   # GET /privileges
   # GET /privileges.json

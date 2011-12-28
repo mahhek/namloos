@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Namloos</title>
+    <%= stylesheet_link_tag    "application.css" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="wide_screen">
+
+    <div id="header">
+      <%= render :partial => "shared/header" %>
+    </div>
+
+
+    <div class="container">
+      <% if flash[:notice] %>
+        <div style="width: 100%;float: left;color: green;margin-left: 10px;">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:error] %>
+        <div style="width: 100%;float: left;color: red;margin-left : 10px;">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <% if is_admin?  %>
+        <%= render :partial => "shared/left_panel" %>
+      <% end %>
+
+      <div class="main">
+        <div class="content-container settings">
+          <%= yield %>
+        </div>
+      </div>
+
+
+      <br class="clear">
+
+      <div class="settings" id="footer">
+        <p>
+          Heb je vragen of opmerkingen?
+          <a class="open-in-popup" href=#">Vertel het ons!</a>
+        </p>
+      </div>
+
+
+
+    </div>
+  </body>
+</html>

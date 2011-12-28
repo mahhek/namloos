@@ -1,4 +1,5 @@
 class RegionsController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
 
   # GET /regions

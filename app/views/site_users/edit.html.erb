@@ -1,4 +1,4 @@
-<h2>Change User</h2>
+<h3>Change User</h3>
 
 <%= form_for(@user, :url => "/site_users/update/#{@user.id}", :html => { :method => :post }) do |f| %>
   <% if @user.errors.any? %>

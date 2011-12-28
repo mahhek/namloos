@@ -1,4 +1,4 @@
-<%= "Register for Namloos" %>
+<h3><%= "Register for Namloos" %></h3>
 
 <%= form_for @user, :url => "/site_users/create" do |f| %>
   <% if @user.errors.any? %>
@@ -13,24 +13,24 @@
     </div>
   <% end %>
 
-  <p><%= f.label :email %><br />
-    <%= f.email_field :email %></p>
+<div class="field" style="margin-bottom: 10px"><%= f.label :email %>
+    <%= f.email_field :email %></div>
 
-  <p><%= f.label :password %><br />
-    <%= f.password_field :password %></p>
+  <div class="field" style="margin-bottom: 10px"><%= f.label :password %>
+    <%= f.password_field :password %></div>
 
-  <p><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></p>
+  <div class="field" style="margin-bottom: 10px"><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %></div>
 
-  <p><%= f.label :group %><br />
+  <div class="field" style="margin-bottom: 10px"><%= f.label :group %>
     <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name") %>
-  </p>
+  </div>
 
-  <p><b>Extensions</b>
+<p><b style="width: 150px; float: left;">Extensions</b>
     <% @extensions.each do|e| %>
       <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false %>
       <%= e.name %>
     <% end %>
   </p>
-  <p><%= f.submit "Sign up" %></p>
+  <div class="actions" style="margin-right: 177px;"><%= f.submit "Sign up" %></div>
 <% end %>

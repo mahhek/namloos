@@ -1,8 +1,8 @@
-<h1>Countries</h1>
+<h3>Countries</h3>
 
-<table>
+<table width="650" class="datatable">
   <tr>
-    <h3>Name:</h3>
+    <th>Name:</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @countries.each do |country| %>
   <tr>
-    <td><%= country.name %></td>
+    <td width="500"><%= country.name %></td>
     <td><%= link_to 'Show', country %></td>
     <td><%= link_to 'Edit', edit_country_path(country) %></td>
     <td><%= link_to 'Destroy', country, confirm: 'Are you sure?', method: :delete %></td>

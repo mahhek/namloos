@@ -11,52 +11,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :country_id %><br />
-    <%= f.select :country_id, options_from_collection_for_select(@countries, :id, :name, @seller_rate.country_id), {:prompt => "Select Country"}, :style => "width:290px;" %>
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :country_id %>
+    <%= f.select :country_id, options_from_collection_for_select(@countries, :id, :name, @seller_rate.country_id), {:prompt => "Select Country"}, :style => "width:300px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :apply_to_id %><br />
-    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @seller_rate.apply_to_id), {:prompt => "Select Apply To"}, :style => "width:290px;" %>
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :apply_to_id %>
+    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @seller_rate.apply_to_id), {:prompt => "Select Apply To"}, :style => "width:300px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :region_id %><br />
-    <%= f.select :region_id, options_from_collection_for_select(@regions, :id, :name, @seller_rate.region_id), {:prompt => "Select Region"}, :style => "width:290px;" %>
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :region_id %>
+    <%= f.select :region_id, options_from_collection_for_select(@regions, :id, :name, @seller_rate.region_id), {:prompt => "Select Region"}, :style => "width:300px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :prefix_id %><br />
-    <%= f.select :prefix_id, options_from_collection_for_select(@prefixes, :id, :name, @seller_rate.prefix_id), {:prompt => "Select Prefix"}, :style => "width:290px;" %>
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :prefix_id %>
+    <%= f.select :prefix_id, options_from_collection_for_select(@prefixes, :id, :name, @seller_rate.prefix_id), {:prompt => "Select Prefix"}, :style => "width:300px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :callgroup_id %><br />
-    <%= f.select :callgroup_id, options_from_collection_for_select(@call_groups, :id, :name, @seller_rate.callgroup_id), {:prompt => "Select Call Group"}, :style => "width:290px;" %>
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :callgroup_id %>
+    <%= f.select :callgroup_id, options_from_collection_for_select(@call_groups, :id, :name, @seller_rate.callgroup_id), {:prompt => "Select Call Group"}, :style => "width:300px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :start_rate %><br />
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :start_rate %>
     <%= f.text_field :start_rate %>
   </div>
-  <div class="field">
-    <%= f.label :call_defination_id %><br />
-    <%= f.select :call_defination_id, options_from_collection_for_select(@call_definations, :id, :name, @seller_rate.call_defination_id), {:prompt => "Select Call Defination"}, :style => "width:290px;" %>
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :call_defination_id %>
+    <%= f.select :call_defination_id, options_from_collection_for_select(@call_definations, :id, :name, @seller_rate.call_defination_id), {:prompt => "Select Call Defination"}, :style => "width:300px;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :rate_per_minute %><br />
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :rate_per_minute %>
     <%= f.text_field :rate_per_minute %>
   </div>
 
-  <div class="field">
-    <%= f.label :end_rate %><br />
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :end_rate %>
     <%= f.text_field :end_rate %>
   </div>
 
-  <div class="field">
-    <%= f.label :call_per_second %><br />
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :call_per_second %>
     <%= f.text_field :call_per_second %>
   </div>
 

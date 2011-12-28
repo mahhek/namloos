@@ -2002,7 +2002,7 @@ body.blue p.domain_hint strong {
     margin-right: 30px;
 }
 .settings, .users {
-    padding-top: 30px;
+/*    padding-top: 30px;*/
 }
 div.first_fields, div.second_fields {
     float: left;
@@ -6480,4 +6480,43 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
 }
 .user_type_selector ul.user_type_details input.checkbox {
     margin-right: 3px;
+}
+
+.datatable {
+    min-width:650px;
+}
+
+.datatable th{
+    background-color: #006699;
+    color: #fff;
+    font-weight: bold;
+}
+
+.datatable td{
+    background-color: #F8F8F8;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+}
+
+.actions{
+    float: right;
+    margin-right: 202px;
+    margin-top: 10px;
+}
+.backlink{
+    float: right;
+    margin: 13px;
+}
+.field label{
+    float:left;
+    min-width:150px;
+}
+
+.field input{
+    float:left;
+    min-width:300px;
+}
+.field{
+    float: left;
+    width: 100%;
 }

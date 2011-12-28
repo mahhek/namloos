@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
   def index
     @groups = Group.all

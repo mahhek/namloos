@@ -1,4 +1,5 @@
 class SellerRatesController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
   # GET /seller_rates
   # GET /seller_rates.json

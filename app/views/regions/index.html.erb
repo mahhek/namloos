@@ -1,8 +1,8 @@
-<h1>Regions</h1>
+<h3>Regions</h3>
 
-<table>
+<table width="650" class="datatable">
   
-    <h3>Region Name:</h3>
+    <th>Region Name:</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @regions.each do |region| %>
   <tr>
-    <td><%= region.name %></td>
+    <td width="500"><%= region.name %></td>
     <td><%= link_to 'Show', region %></td>
     <td><%= link_to 'Edit', edit_region_path(region) %></td>
     <td><%= link_to 'Destroy', region, confirm: 'Are you sure?', method: :delete %></td>

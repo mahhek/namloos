@@ -1,4 +1,5 @@
 class PrefixesController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
 
   # GET /prefixes

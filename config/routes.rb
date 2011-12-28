@@ -40,11 +40,11 @@ Namloos::Application.routes.draw do
     root :to => "users/sessions#new"
     get "sign_in" => "users/sessions#new"
     get "sign_out" => "users/sessions#destroy"
-#    get "users" => "users/registrations#index"
-#    get "show_user/:id" => "users/registrations#show"
-#    get "new_user" => "users/registrations#new"
-#    get "edit_user/:id" => "users/registrations#edit"
-#    get "destroy_user/:id" => "users/registrations#destroy"
+    #    get "users" => "users/registrations#index"
+    #    get "show_user/:id" => "users/registrations#show"
+    #    get "new_user" => "users/registrations#new"
+    #    get "edit_user/:id" => "users/registrations#edit"
+    #    get "destroy_user/:id" => "users/registrations#destroy"
   end
 
   resources :home
@@ -95,7 +95,7 @@ Namloos::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

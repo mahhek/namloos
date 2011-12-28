@@ -1,4 +1,5 @@
 class CallDefinationsController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user!
 
   # GET /call_definations

@@ -1,8 +1,8 @@
-<h1>Call Definitions</h1>
+<h3>Call Definitions</h3>
 
-<table>
+<table width="650" class="datatable">
   
-    <h3>Types:</h3>
+    <th>Types:</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @call_definations.each do |call_defination| %>
   <tr>
-    <td><%= call_defination.name %></td>
+    <td width="500"><%= call_defination.name %></td>
     <td><%= link_to 'Show', call_defination %></td>
     <td><%= link_to 'Edit', edit_call_defination_path(call_defination) %></td>
     <td><%= link_to 'Destroy', call_defination, confirm: 'Are you sure?', method: :delete %></td>

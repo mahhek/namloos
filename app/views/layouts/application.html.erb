@@ -7,150 +7,42 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="wide_screen">
-    <div style="width: 100%;float: left;color: green">
-      <%= flash[:notice] %>
-    </div>
-    <div style="width: 100%;float: left;color: red">
-      <%= flash[:error] %>
-    </div>
 
-      	<div id="header">
-
-		<div id="menu">
-			<ul class="menu">
-
-        <!-- <li ><a href="#"><img alt="Home" src="images/home.png" /></a></li> -->
-				<li><a href="#">Facturen</a></li>
-				<li>
-					<a class="" href="#">Inkoop</a>				</li>
-        <li><a href="#">Periodiek</a></li>
-				<li><a href="#">Offertes</a></li>
-        <li>
-          <a class="" href="#">Bank</a>        </li>
-				<li><a href="#">Contacten</a></li>
-        <li class="submenu ">
-          <a class="account" href="#">Rapporten</a>
-          <div class="submenu left">
-            <ul>
-              <li><a href="#">Resultatenrekening</a></li>
-              <li><a href="#">BTW aangifte</a></li>
-              <li class="line"><a href="#">Koersverschil</a></li>
-              <li><a href="#">Debiteurenoverzicht</a></li>
-              <li><a href="#">Crediteurenoverzicht</a></li>
-            </ul>
-          </div>
-        </li>
-
-				<li><a href="#"><img src="images/search.png" alt="Search"></a></li>
-
-
-
-				<li class="account submenu">
-				  <a class="account" href="#">Account</a>
-				  <div class="submenu right">
-  				  <ul>
-  				    <li class="logged_in_as line">
-  				      <p>welcome</p>
-  				      <h4><a href="#"><%= current_user.email %></a></h4>
-  				    </li>
-  				    <li>
-  				      <a href="#">Pakket &amp; betalingen</a>
-  				    </li>
-      				<li><a href="#">Instellingen</a></li>
-              <li> <%= link_to "Log Out", "/sign_out" %></li>
-            </ul>
-          </div>
-				</li>
-				<li class="help"><a target="blank" class="help" href="#">Help</a></li>
-			</ul>
-		</div>
-
-	</div>
-
-
-	<div class="container">
-	  <div class="settings_navigation">
-      <h4>Instellingen</h4>
-
-      <ul>
-        <li class="active">
-          <%= link_to "Countries", countries_path %>
-        </li>
-        <li>
-          <%= link_to "Apply To", apply_tos_path %>
-        </li>
-    		<li>
-    		  <%= link_to "Regions", regions_path %>
-    		</li>
-    		<li>
-    		  <%= link_to "Prefixes", prefixes_path %>
-    		</li>
-    		<li>
-    		  <%= link_to "Call Groups", callgroups_path %>
-    		</li>
-    		<li>
-          <%= link_to "Call Definations", call_definations_path %>
-        </li>
-
-
-      </ul>
+    <div id="header">
+      <%= render :partial => "shared/header" %>
     </div>
 
 
-    <div style="clear:both;float: left;width:100%;display: none;" >
-      <% unless current_user.blank? %>
-        <div style="float: left;width:100%;clear: both;">
-          <div style="float: left;margin: 10px;">
-            Welcome!
-            <%= current_user.email %>
-          </div>
-
-          <div style="float: left;margin: 10px;">
-            <%= link_to "Log Out", "/sign_out" %>
-          </div>
-        </div>
-
-        <br />
-        <div style="float: left;margin: 10px;" style="display: none">
-          <% if is_admin? %>
-            <%= link_to "Users", site_users_path %> |
-            <%= link_to "Groups", groups_path %> |
-            <%= link_to "Privileges", privileges_path %> |
-            <%= link_to "Seller Rates", seller_rates_path %> |
-            <%= link_to "Countries", countries_path %> |
-            <%= link_to "Apply To", apply_tos_path %> |
-            <%= link_to "Regions", regions_path %> |
-            <%= link_to "Prefixes", prefixes_path %> |
-            <%= link_to "Call Groups", callgroups_path %> |
-            <%= link_to "Call Definations", call_definations_path %>
-          <% else %>
-            <%= link_to "Edit Profile", edit_site_user_path(current_user) %>
-          <% end %>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div style="width: 100%;float: left;color: green;margin-left: 10px;">
+          <%= flash[:notice] %>
         </div>
       <% end %>
+      <% if flash[:error] %>
+        <div style="width: 100%;float: left;color: red;margin-left : 10px;">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <div class="main" style="width: 100%;">
+        <div class="content-container settings" style="width: 100%;padding: 0px 0px;">
+          <%= yield %>
+        </div>
+      </div>
+
+
+      <br class="clear"/>
+
+      <div class="settings" id="footer">
+        <p>
+          Heb je vragen of opmerkingen?
+          <a class="open-in-popup" href=#">Vertel het ons!</a>
+        </p>
+      </div>
+
+
+
     </div>
-
-
-
-
-   <div class="main">
-<div class="content-container settings">
-    <%= yield %>
-</div>
-   </div>
-
-
-          <br class="clear">
-
-		<div class="settings" id="footer">
-      <p>
-        Heb je vragen of opmerkingen?
-        <a class="open-in-popup" href=#">Vertel het ons!</a>
-      </p>
-    </div>
-
-
-
-	</div>
   </body>
 </html>

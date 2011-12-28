@@ -1,0 +1,46 @@
+<div id="menu">
+  <ul class="menu">
+
+    <!-- <li ><a href="#"><img alt="Home" src="images/home.png" /></a></li> -->
+    <li><a href="/">Dashboard</a></li>
+    <li><a class="" href="#">Inbox</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Offers</a></li>
+    <li><a class="" href="#">Bank</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li class="submenu ">
+      <a class="account" href="#">Report</a>
+      <div class="submenu left">
+        <ul>
+          <li><a href="#">Abc link</a></li>
+          <li><a href="#">Abc link</a></li>
+          <li class="line"><a href="#">Abc link</a></li>
+          <li><a href="#">Abc link</a></li>
+          <li><a href="#">Abc link</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li><a href="#"><img src="images/search.png" alt="Search"></a></li>
+
+
+
+    <li class="account submenu">
+      <a class="account" href="#">Account</a>
+      <div class="submenu right">
+        <ul>
+          <li class="logged_in_as line">
+            <p>welcome</p>
+            <h4><a href="#"><%= current_user.email %></a></h4>
+          </li>
+          <li>
+            <a href="#">Pakket &amp; betalingen</a>
+          </li>
+          <li><a href="seller_rates">Settings</a></li>
+          <li> <%= link_to "Log Out", "/sign_out" %></li>
+        </ul>
+      </div>
+    </li>
+    <li class="help"><a target="blank" class="help" href="#">Help</a></li>
+  </ul>
+</div>
