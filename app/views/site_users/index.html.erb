@@ -13,7 +13,7 @@
     <td width="400"><%= site_user.email %></td>
     <td><%= link_to 'Show', "/site_users/show/#{site_user.id}" %></td>
     <td><%= link_to 'Edit', edit_site_user_path(site_user) %></td>
-    <td><%= link_to 'Destroy', "site_users/destroy/#{site_user.id}", :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to (image_tag 'trash.png'), "site_users/destroy/#{site_user.id}", :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to 'Assign Privileges', "site_users/assign_privileges/#{site_user.id}" %></td>
   </tr>
 <% end %>

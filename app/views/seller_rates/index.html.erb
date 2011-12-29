@@ -31,7 +31,7 @@
       <td><%= seller_rate.call_per_second %></td>
       <td><%= link_to 'Show', seller_rate %></td>
       <td><%= link_to 'Edit', edit_seller_rate_path(seller_rate) %></td>
-      <td><%= link_to 'Destroy', seller_rate, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to (image_tag 'trash.png'), seller_rate, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>
 </table>

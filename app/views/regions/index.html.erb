@@ -13,7 +13,7 @@
     <td width="500"><%= region.name %></td>
     <td><%= link_to 'Show', region %></td>
     <td><%= link_to 'Edit', edit_region_path(region) %></td>
-    <td><%= link_to 'Destroy', region, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to (image_tag 'trash.png'), region, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
