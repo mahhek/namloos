@@ -29,7 +29,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: naamloos_production
+  database: naamloos_development
   pool: 5
   username: root
   password: 123
