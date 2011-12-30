@@ -6205,7 +6205,7 @@ table.totals_table th.header {
 }
 div.content-container.settings {
     float: left;
-    width: 651px;
+    min-width: 651px;
     min-height: 300px;
 }
 div.content-container.settings div.categories, div.content-container.settings div.products {

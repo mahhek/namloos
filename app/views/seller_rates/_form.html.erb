@@ -12,6 +12,28 @@
   <% end %>
 
   <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :valid_from, 'Valid From' %>
+    <%= f.text_field :valid_from %>
+    <script type="text/javascript">
+      $(function()
+      {
+      $("#seller_rate_valid_from").datePicker();
+      });
+    </script>
+  </div>
+
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :valid_to, 'Valid To' %>
+    <%= f.text_field :valid_to %>
+    <script type="text/javascript">
+      $(function()
+      {
+      $("#seller_rate_valid_to").datePicker();
+      });
+    </script>
+  </div>
+
+  <div class="field" style="margin-bottom: 10px;">
     <%= f.label :country_id %>
     <%= f.select :country_id, options_from_collection_for_select(@countries, :id, :name, @seller_rate.country_id), {:prompt => "Select Country"}, :style => "width:300px;" %>
   </div>

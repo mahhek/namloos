@@ -2,8 +2,9 @@
 <html>
   <head>
     <title>Namloos</title>
-    <%= stylesheet_link_tag    "application.css" %>
-    <%= javascript_include_tag "application" %>
+
+    <%= stylesheet_link_tag    "application.css", "datepicker.css" %>
+    <%= javascript_include_tag "application", "jquery-ui-1.8.11.custom.min.js", "jquery.datePicker.js", "date.js" %>
     <%= csrf_meta_tags %>
   </head>
   <body class="wide_screen">
@@ -31,12 +32,15 @@
 
       <div class="main">
         <div class="content-container settings">
+
+          <div class="field" style="margin-bottom: 10px;">
+
           <%= yield %>
         </div>
       </div>
 
 
-      <br class="clear">
+      <br class="clear"/>
 
       <div class="settings" id="footer">
         <p>

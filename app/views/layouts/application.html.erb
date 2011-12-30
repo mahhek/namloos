@@ -2,8 +2,9 @@
 <html>
   <head>
     <title>Namloos</title>
-    <%= stylesheet_link_tag    "application.css" %>
-    <%= javascript_include_tag "application" %>
+    
+    <%= stylesheet_link_tag    "application.css", "datepicker.css" %>
+    <%= javascript_include_tag "application", "jquery-ui-1.8.11.custom.min.js", "jquery.datePicker.js", "date.js" %>
     <%= csrf_meta_tags %>
   </head>
   <body class="wide_screen">

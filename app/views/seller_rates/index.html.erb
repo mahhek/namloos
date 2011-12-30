@@ -2,6 +2,8 @@
 
 <table  class="datatable">
   <tr>
+    <th>Valid From</th>
+    <th>Valid to</th>
     <th>Country</th>
     <th>Apply to</th>
     <th>Region</th>
@@ -19,6 +21,8 @@
 
   <% @seller_rates.each do |seller_rate| %>
     <tr>
+      <td><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></td>
+      <td><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank? %></td>
       <td><%= seller_rate.country.name %></td>
       <td><%= seller_rate.apply_to.name %></td>
       <td><%= seller_rate.region.name unless seller_rate.region.blank?%></td>
@@ -38,4 +42,4 @@
 
 <br />
 
-<%= link_to 'New Seller rate', new_seller_rate_path %>
+<%= link_to 'New Seller Rate', new_seller_rate_path %>

@@ -9,6 +9,7 @@ class SellerRate < ActiveRecord::Base
   validates :rate_per_minute, :presence => {:message => 'must be specified!'}
   validates :end_rate, :presence => {:message => 'must be specified!'}
   validates :call_per_second, :presence => {:message => 'must be specified!'}
+  validates :apply_to_id, :uniqueness => {:scope => [:prefix_id, :valid_from, :valid_to], :message => "already exists with this combination of prefix, valid from and valid to!"}
 
   belongs_to :country
   belongs_to :prefix
