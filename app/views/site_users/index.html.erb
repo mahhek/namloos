@@ -1,23 +1,19 @@
-<h3>Users</h3>
+<h3>Users&nbsp;&nbsp;&nbsp;<%= link_to '+', new_site_user_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
 
 <table width="650" class="datatable">
-
-  <th>Email</th>
-  <th></th>
-  <th></th>
-  <th></th>
-  <th></th>
-    
-<% @users.each do |site_user| %>
-  <tr>
-    <td width="400"><%= site_user.email %></td>
-    <td><%= link_to 'Show', "/site_users/show/#{site_user.id}" %></td>
-    <td><%= link_to 'Edit', edit_site_user_path(site_user) %></td>
-    <td><%= link_to (image_tag 'trash.png'), "site_users/destroy/#{site_user.id}", :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Assign Privileges', "site_users/assign_privileges/#{site_user.id}" %></td>
+  <tr style="border-bottom: 1px solid #999999;">
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
-<% end %>
+  <% @users.each do |site_user| %>
+    <tr>
+      <td width="400"><%= site_user.email %></td>
+      <td><%= link_to 'Edit', edit_site_user_path(site_user) %></td>
+      <td><%= link_to (image_tag 'trash.png'), "site_users/destroy/#{site_user.id}", :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Assign Privileges', "site_users/assign_privileges/#{site_user.id}" %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-<%= link_to 'New User', new_site_user_path %>

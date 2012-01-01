@@ -1,23 +1,18 @@
-<h3>Call Groups</h3>
+<h3>Call Groups&nbsp;&nbsp;&nbsp;<%= link_to '+', new_callgroup_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
 
 <table width="650" class="datatable">
-  
+  <tr style="border-bottom: 1px solid #999999;">
     <th>Names:</th>
     <th></th>
     <th></th>
-    <th></th>
-  
-
-<% @callgroups.each do |callgroup| %>
-  <tr>
-    <td width="500"><%= callgroup.name %></td>
-    <td><%= link_to 'Show', callgroup %></td>
-    <td><%= link_to 'Edit', edit_callgroup_path(callgroup) %></td>
-    <td><%= link_to (image_tag 'trash.png'), callgroup, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
-<% end %>
+
+  <% @callgroups.each do |callgroup| %>
+    <tr>
+      <td width="500"><%= callgroup.name %></td>
+      <td><%= link_to 'Edit', edit_callgroup_path(callgroup) %></td>
+      <td><%= link_to (image_tag 'trash.png'), callgroup, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Callgroup', new_callgroup_path %>

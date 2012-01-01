@@ -1,23 +1,18 @@
-<h3>Prefixes</h3>
+<h3>Prefixes&nbsp;&nbsp;&nbsp;<%= link_to '+', new_prefix_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
 
 <table width="650" class="datatable">
-  
+  <tr style="border-bottom: 1px solid #999999;">
     <th>Codes:</th>
     <th></th>
     <th></th>
-    <th></th>
-  
-
-<% @prefixes.each do |prefix| %>
-  <tr>
-    <td width="500"><%= prefix.name %></td>
-    <td><%= link_to 'Show', prefix %></td>
-    <td><%= link_to 'Edit', edit_prefix_path(prefix) %></td>
-    <td><%= link_to (image_tag 'trash.png'), prefix, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
-<% end %>
+
+  <% @prefixes.each do |prefix| %>
+    <tr>
+      <td width="500"><%= prefix.name %></td>
+      <td><%= link_to 'Edit', edit_prefix_path(prefix) %></td>
+      <td><%= link_to (image_tag 'trash.png'), prefix, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Prefix', new_prefix_path %>

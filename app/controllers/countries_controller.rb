@@ -1,90 +1,53 @@
 class CountriesController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
-  # GET /countries
-  # GET /countries.json
+
   def index
     @countries = Country.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @countries }
-    end
   end
 
-  # GET /countries/1
-  # GET /countries/1.json
   def show
     @country = Country.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @country }
-    end
   end
 
-  # GET /countries/new
-  # GET /countries/new.json
   def new
     @country = Country.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @country }
-    end
   end
 
-  # GET /countries/1/edit
   def edit
     @country = Country.find(params[:id])
   end
 
-  # POST /countries
-  # POST /countries.json
-
   def create
     @country = Country.new(params[:country])
-
-    respond_to do |format|
-      if @country.save
-        format.html { redirect_to @country, notice: 'Country was successfully created.' }
-        format.json { render json: @country, status: :created, location: @country }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
-      end
-    end
+    if @country.save
+      redirect_to :action => "index", :notice => 'Country was successfully created.'
+    else
+      render :update do |page|
+        page["error_messages"].replace_html :partial => "/shared/error_messages", :locals => { :object => @country }
+      end      
+    end        
   end
 
-  # PUT /countries/1
-  # PUT /countries/1.json
   def update
     @country = Country.find(params[:id])
-
-    respond_to do |format|
-      if @country.update_attributes(params[:country])
-        format.html { redirect_to @country, notice: 'Country was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
+    if @country.update_attributes(params[:country])
+      redirect_to :action => "index", :notice => 'Country was successfully updated.'
+    else
+      render :update do |page|
+        page["error_messages"].replace_html :partial => "/shared/error_messages", :locals => { :object => @country }
       end
     end
   end
 
-  # DELETE /countries/1
-  # DELETE /countries/1.json
   def destroy
     @country = Country.find(params[:id])
-      if @country.seller_rates.count > 0
-        flash[:error] = "Country cannot be deleted, It has some seller rates against it!"
-      else
-        @country.destroy
-        flash[:notice] = "Country is deleted Successfully!"
-      end
-    respond_to do |format|
-      format.html { redirect_to countries_url }
-      format.json { head :ok }
+    if @country.seller_rates.count > 0
+      flash[:error] = "Country cannot be deleted, It has some seller rates against it!"
+    else
+      @country.destroy
+      flash[:notice] = "Country is deleted Successfully!"
     end
+    redirect_to countries_url
   end
 end

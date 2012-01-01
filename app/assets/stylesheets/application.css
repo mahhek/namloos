@@ -6205,7 +6205,7 @@ table.totals_table th.header {
 }
 div.content-container.settings {
     float: left;
-    min-width: 651px;
+    width: 651px;
     min-height: 300px;
 }
 div.content-container.settings div.categories, div.content-container.settings div.products {
@@ -6292,7 +6292,7 @@ div.content-container.settings ul.ledger_account_types p {
 }
 .settings_navigation {
     float: left;
-    width: 246px;
+    width: 280px;
 }
 .settings_navigation h4 {
     font-size: 13px;
@@ -6483,19 +6483,20 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
 }
 
 .datatable {
-    min-width:650px;
+    width:650px;
 }
 
 .datatable th{
-    background-color: #006699;
-    color: #fff;
+    background-color: #ffffff;
+    color: #0066CC;
     font-weight: bold;
 }
 
 .datatable td{
-    background-color: #F8F8F8;
+    background-color: #FFFFFF;
     color: #000;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 5px 3px;
 }
 
 .actions{

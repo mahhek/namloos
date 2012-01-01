@@ -1,45 +1,40 @@
-<h3>Seller Rates</h3>
+<h3>Seller Rates&nbsp;&nbsp;&nbsp;<%= link_to '+', new_seller_rate_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
 
 <table  class="datatable">
-  <tr>
-    <th>Valid From</th>
-    <th>Valid to</th>
-    <th>Country</th>
-    <th>Apply to</th>
-    <th>Region</th>
-    <th>Prefix</th>
-    <th>Callgroup</th>
-    <th>Start Rate</th>
-    <th>End Rate</th>
-    <th>Call defination</th>
-    <th>Rate/min.</th>
-    <th>Call/Secs</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr style="border-bottom: 1px solid #999999;">
+    <th style="width: 8%;">Valid From</th>
+    <th style="width: 8%;">Valid to</th>
+    <th style="width: 7%;">Country</th>
+    <th style="width: 7%;">Apply to</th>
+    <th style="width: 7%;">Region</th>
+    <th style="width: 7%;">Prefix</th>
+    <th style="width: 7%;">Callgroup</th>
+    <th style="width: 7%;">Start Rate</th>
+    <th style="width: 7%;">End Rate</th>
+    <th style="width: 7%;">Call defination</th>
+    <th style="width: 7%;">Rate/min.</th>
+    <th style="width: 7%;">Call/Secs</th>
+    <th style="width: 7%;"></th>
+    <th style="width: 7%;"></th>
   </tr>
 
   <% @seller_rates.each do |seller_rate| %>
     <tr>
-      <td><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></td>
-      <td><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank? %></td>
-      <td><%= seller_rate.country.name %></td>
-      <td><%= seller_rate.apply_to.name %></td>
-      <td><%= seller_rate.region.name unless seller_rate.region.blank?%></td>
-      <td><%= seller_rate.prefix.name %></td>
-      <td><%= seller_rate.callgroup.name %></td>
-      <td><%= seller_rate.start_rate %></td>
-      <td><%= seller_rate.end_rate %></td>
-      <td><%= seller_rate.call_defination.name %></td>
-      <td><%= seller_rate.rate_per_minute %></td>
-      <td><%= seller_rate.call_per_second %></td>
-      <td><%= link_to 'Show', seller_rate %></td>
-      <td><%= link_to 'Edit', edit_seller_rate_path(seller_rate) %></td>
-      <td><%= link_to (image_tag 'trash.png'), seller_rate, confirm: 'Are you sure?', method: :delete %></td>
+      <td style="width: 8%;"><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></td>
+      <td style="width: 8%;"><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank? %></td>
+      <td style="width: 7%;"><%= seller_rate.country.name %></td>
+      <td style="width: 7%;"><%= seller_rate.apply_to.name %></td>
+      <td style="width: 7%;"><%= seller_rate.region.name unless seller_rate.region.blank?%></td>
+      <td style="width: 7%;"><%= seller_rate.prefix.name %></td>
+      <td style="width: 7%;"><%= seller_rate.callgroup.name %></td>
+      <td style="width: 7%;"><%= seller_rate.start_rate %></td>
+      <td style="width: 7%;"><%= seller_rate.end_rate %></td>
+      <td style="width: 7%;"><%= seller_rate.call_defination.name %></td>
+      <td style="width: 7%;"><%= seller_rate.rate_per_minute %></td>
+      <td style="width: 7%;"><%= seller_rate.call_per_second %></td>
+      <td style="width: 7%;"><%= link_to 'Edit', edit_seller_rate_path(seller_rate) %></td>
+      <td style="width: 7%;"><%= link_to (image_tag 'trash.png'), seller_rate, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Seller Rate', new_seller_rate_path %>

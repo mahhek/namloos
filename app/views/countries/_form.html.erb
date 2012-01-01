@@ -1,16 +1,7 @@
-<%= form_for(@country) do |f| %>
-  <% if @country.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
-
-      <ul>
-      <% @country.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for(@country, :remote =>  true) do |f| %>
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @country } %>
+  </div>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>

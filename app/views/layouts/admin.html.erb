@@ -3,9 +3,9 @@
   <head>
     <title>Namloos</title>
 
-    <%= stylesheet_link_tag    "application", "datepicker" %>
-    <%= javascript_include_tag "application", "jquery-ui-1.8.11.custom.min", "jquery.datePicker", "date" %>
-    
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body class="wide_screen">
@@ -36,21 +36,21 @@
 
           <div class="field" style="margin-bottom: 10px;">
 
-          <%= yield %>
+            <%= yield %>
+          </div>
         </div>
+
+
+        <br class="clear"/>
+
+        <div class="settings" id="footer">
+          <p>
+            Heb je vragen of opmerkingen?
+            <a class="open-in-popup" href=#">Vertel het ons!</a>
+          </p>
+        </div>
+
       </div>
-
-
-      <br class="clear"/>
-
-      <div class="settings" id="footer">
-        <p>
-          Heb je vragen of opmerkingen?
-          <a class="open-in-popup" href=#">Vertel het ons!</a>
-        </p>
-      </div>
-
-
 
     </div>
   </body>

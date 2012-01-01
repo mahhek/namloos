@@ -1,23 +1,18 @@
-<h3>Call Definitions</h3>
+<h3>Call Definitions&nbsp;&nbsp;&nbsp;<%= link_to '+', new_call_defination_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
 
 <table width="650" class="datatable">
-  
+  <tr style="border-bottom: 1px solid #999999;">
     <th>Types:</th>
+    <th></th>    
     <th></th>
-    <th></th>
-    <th></th>
-  
-
-<% @call_definations.each do |call_defination| %>
-  <tr>
-    <td width="500"><%= call_defination.name %></td>
-    <td><%= link_to 'Show', call_defination %></td>
-    <td><%= link_to 'Edit', edit_call_defination_path(call_defination) %></td>
-    <td><%= link_to (image_tag 'trash.png'), call_defination, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
-<% end %>
+
+  <% @call_definations.each do |call_defination| %>
+    <tr>
+      <td width="500"><%= call_defination.name %></td>
+      <td><%= link_to 'Edit', edit_call_defination_path(call_defination) %></td>
+      <td><%= link_to (image_tag 'trash.png'), call_defination, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Call defination', new_call_defination_path %>

@@ -1,22 +1,17 @@
-<h3>Groups</h3>
+<h3>Groups&nbsp;&nbsp;&nbsp;<%= link_to '+', new_group_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
 
 <table width="650" class="datatable">
-
-  <th>Name</th>
-  <th></th>
-  <th></th>
-  <th></th>
-
+  <tr style="border-bottom: 1px solid #999999;">
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
   <% @groups.each do |group| %>
     <tr>
       <td width="500"><%= group.name %></td>
-      <td><%= link_to 'Show', group %></td>
       <td><%= link_to 'Edit', edit_group_path(group) %></td>
       <td><%= link_to (image_tag 'trash.png'), group, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Group', new_group_path %>
