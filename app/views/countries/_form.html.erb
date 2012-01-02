@@ -2,6 +2,7 @@
   <div style="float: left;width: 100%;" id="error_messages">
     <%= render :partial => "/shared/error_messages", :locals => { :object => @country } %>
   </div>
+
   <div class="field">
     <%= f.label :region_id, "Region" %>
     <%= f.select :region_id, "<option value="">Please select region</option>" + options_from_collection_for_select(@regions, :id, :name),{}, :style => "width:200px;" %>

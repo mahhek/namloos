@@ -1,4 +1,9 @@
-<h3>Regions&nbsp;&nbsp;&nbsp;<%= link_to '+', new_region_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
+
+<h3>Regions&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_region_path}');", :class => "functional_link" %></h3>
+
+<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
+
+</div>
 
 <table width="650" class="datatable">
   <tr style="border-bottom: 1px solid #999999;">
@@ -9,10 +14,10 @@
 
   <% @regions.each do |region| %>
     <tr>
-      <td width="500"><%= region.name %></td>
+      <td><%= region.name %></td>
       <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_region_path(region) %></td>
       <td><%= link_to (image_tag 'trash.png'), region, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
-  <% end %>
+   <% end %>
 </table>
 

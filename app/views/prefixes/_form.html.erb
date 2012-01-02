@@ -1,15 +1,7 @@
-<%= form_for(@prefix) do |f| %>
-  <% if @prefix.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@prefix.errors.count, "error") %> prohibited this prefix from being saved:</h2>
-
-      <ul>
-      <% @prefix.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@prefix, :remote =>  true) do |f| %>
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @prefix } %>
+  </div>
 
   <div class="field">
     <%= f.label :name %>

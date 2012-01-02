@@ -1,4 +1,7 @@
-<h3>Call Definitions&nbsp;&nbsp;&nbsp;<%= link_to '+', new_call_defination_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
+<h3>Call Definitions&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_call_defination_path}');", :class => "functional_link" %></h3>
+<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
+
+</div>
 
 <table width="650" class="datatable">
   <tr style="border-bottom: 1px solid #999999;">

@@ -2,78 +2,59 @@ class CallgroupsController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
 
-  # GET /callgroups
-  # GET /callgroups.json
   def index
     @callgroups = Callgroup.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @callgroups }
-    end
   end
 
-  # GET /callgroups/1
-  # GET /callgroups/1.json
   def show
     @callgroup = Callgroup.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @callgroup }
-    end
   end
 
-  # GET /callgroups/new
-  # GET /callgroups/new.json
   def new
     @callgroup = Callgroup.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @callgroup }
-    end
+    render :layout =>false
   end
 
-  # GET /callgroups/1/edit
   def edit
     @callgroup = Callgroup.find(params[:id])
   end
 
-  # POST /callgroups
-  # POST /callgroups.json
   def create
     @callgroup = Callgroup.new(params[:callgroup])
 
     respond_to do |format|
       if @callgroup.save
-        format.html { redirect_to @callgroup, notice: 'Callgroup was successfully created.' }
-        format.json { render json: @callgroup, status: :created, location: @callgroup }
+        format.js do
+          render :js => "window.location='/callgroups'"
+        end
       else
-        format.html { render action: "new" }
-        format.json { render json: @callgroup.errors, status: :unprocessable_entity }
+        format.js do
+          foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @callgroup }).to_json
+          render :js => "$('#error_messages').html(#{foo})"
+        end
       end
     end
   end
 
-  # PUT /callgroups/1
-  # PUT /callgroups/1.json
+
   def update
     @callgroup = Callgroup.find(params[:id])
 
     respond_to do |format|
       if @callgroup.update_attributes(params[:callgroup])
-        format.html { redirect_to @callgroup, notice: 'Callgroup was successfully updated.' }
-        format.json { head :ok }
+        format.js do
+          render :js => "window.location='/callgroups'"
+        end
       else
-        format.html { render action: "edit" }
-        format.json { render json: @callgroup.errors, status: :unprocessable_entity }
+        format.js do
+          foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @callgroup }).to_json
+          render :js => "$('#error_messages').html(#{foo})"
+        end
       end
     end
   end
 
-  # DELETE /callgroups/1
-  # DELETE /callgroups/1.json
+
   def destroy
     @callgroup = Callgroup.find(params[:id])
 
@@ -83,10 +64,8 @@ class CallgroupsController < ApplicationController
       @callgroup.destroy
       flash[:notice] = "Call group deleted successfully!"
     end    
-
-    respond_to do |format|
-      format.html { redirect_to callgroups_url }
-      format.json { head :ok }
-    end
+    redirect_to callgroups_url
+      
   end
 end
+

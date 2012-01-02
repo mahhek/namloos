@@ -1,21 +1,13 @@
-<%= form_for(@call_defination) do |f| %>
-  <% if @call_defination.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@call_defination.errors.count, "error") %> prohibited this call_defination from being saved:</h2>
-
-      <ul>
-      <% @call_defination.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@call_defination, :remote =>  true) do |f| %>
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @call_defination } %>
+  </div>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

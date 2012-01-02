@@ -1,4 +1,9 @@
-<%= form_for(@apply_to) do |f| %>
+
+<%= form_for(@apply_to, :remote =>  true) do |f| %>
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @apply_to } %>
+  </div>
+
   <% if @apply_to.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@apply_to.errors.count, "error") %> prohibited this apply_to from being saved:</h2>

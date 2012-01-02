@@ -2,78 +2,59 @@ class RegionsController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
 
-  # GET /regions
-  # GET /regions.json
   def index
     @regions = Region.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @regions }
-    end
   end
-
-  # GET /regions/1
-  # GET /regions/1.json
+  
   def show
     @region = Region.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @region }
-    end
   end
 
-  # GET /regions/new
-  # GET /regions/new.json
   def new
     @region = Region.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @region }
-    end
+    render :layout => false
   end
 
-  # GET /regions/1/edit
   def edit
     @region = Region.find(params[:id])
   end
 
-  # POST /regions
-  # POST /regions.json
   def create
     @region = Region.new(params[:region])
 
     respond_to do |format|
       if @region.save
-        format.html { redirect_to @region, notice: 'Region was successfully created.' }
-        format.json { render json: @region, status: :created, location: @region }
+        format.js do
+          render :js => "window.location='/regions'"
+        end
       else
-        format.html { render action: "new" }
-        format.json { render json: @region.errors, status: :unprocessable_entity }
+        format.js do
+          foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @region }).to_json
+          render :js => "$('#error_messages').html(#{foo})"
+        end
       end
     end
   end
 
-  # PUT /regions/1
-  # PUT /regions/1.json
+
   def update
     @region = Region.find(params[:id])
 
     respond_to do |format|
       if @region.update_attributes(params[:region])
-        format.html { redirect_to @region, notice: 'Region was successfully updated.' }
-        format.json { head :ok }
+        format.js do
+          render :js => "window.location='/regions'"
+        end
       else
-        format.html { render action: "edit" }
-        format.json { render json: @region.errors, status: :unprocessable_entity }
+        format.js do
+          foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @region }).to_json
+          render :js => "$('#error_messages').html(#{foo})"
+        end
       end
     end
   end
 
-  # DELETE /regions/1
-  # DELETE /regions/1.json
+
   def destroy
     @region = Region.find(params[:id])
     if @region.seller_rates.count > 0
@@ -82,10 +63,8 @@ class RegionsController < ApplicationController
       @region.destroy
       flash[:notice] = "Region deleted successfully!"
     end
- 
-    respond_to do |format|
-      format.html { redirect_to regions_url }
-      format.json { head :ok }
-    end
+    redirect_to regions_url
+
   end
 end
+
