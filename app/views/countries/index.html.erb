@@ -4,6 +4,7 @@
 </div>
 <table width="650" class="datatable">
   <tr style="border-bottom: 1px solid #999999;">
+    <th>Region:</th>
     <th>Name:</th>
     <th>Code</th>
     <th></th>
@@ -12,6 +13,7 @@
 
   <% @countries.each do |country| %>
     <tr>
+      <td><%= country.region.name if country.region%></td>
       <td><%= country.name %></td>
       <td><%= country.code %></td>
       <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_country_path(country)}')", :class => "functional_link"  %></td>
