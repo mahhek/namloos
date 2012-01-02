@@ -10,7 +10,7 @@
   <% @prefixes.each do |prefix| %>
     <tr>
       <td width="500"><%= prefix.name %></td>
-      <td><%= link_to 'Edit', edit_prefix_path(prefix) %></td>
+      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_prefix_path(prefix) %></td>
       <td><%= link_to (image_tag 'trash.png'), prefix, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>

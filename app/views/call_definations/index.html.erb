@@ -10,7 +10,7 @@
   <% @call_definations.each do |call_defination| %>
     <tr>
       <td width="500"><%= call_defination.name %></td>
-      <td><%= link_to 'Edit', edit_call_defination_path(call_defination) %></td>
+      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_call_defination_path(call_defination) %></td>
       <td><%= link_to (image_tag 'trash.png'), call_defination, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>

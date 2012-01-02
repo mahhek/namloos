@@ -10,7 +10,7 @@
   <% @callgroups.each do |callgroup| %>
     <tr>
       <td width="500"><%= callgroup.name %></td>
-      <td><%= link_to 'Edit', edit_callgroup_path(callgroup) %></td>
+      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_callgroup_path(callgroup) %></td>
       <td><%= link_to (image_tag 'trash.png'), callgroup, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>
