@@ -24,8 +24,11 @@ class CountriesController < ApplicationController
       redirect_to :action => "index", :notice => 'Country was successfully created.'
     else
       render :update do |page|
-        page["error_messages"].replace_html :partial => "/shared/error_messages", :locals => { :object => @country }
-      end      
+        #        page["error_messages"].replace_html :text => "Fit a fit a fit a fit a fit."
+#        page << "$('#{error_messages}').html('Fit a fit a fit a fit a fit.');"
+        page << "alert('fit');"
+        #        :partial => "/shared/error_messages", :locals => { :object => @country }
+      end
     end        
   end
 
@@ -35,7 +38,8 @@ class CountriesController < ApplicationController
       redirect_to :action => "index", :notice => 'Country was successfully updated.'
     else
       render :update do |page|
-        page["error_messages"].replace_html :partial => "/shared/error_messages", :locals => { :object => @country }
+        page["error_messages"].replace_html :text => "Fit a fit a fit a fit a fit."
+        #        :partial => "/shared/error_messages", :locals => { :object => @country }
       end
     end
   end

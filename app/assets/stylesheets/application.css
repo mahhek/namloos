@@ -6501,7 +6501,7 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
 
 .actions{
     float: right;
-    margin-right: 202px;
+    margin-right: 315px;
     margin-top: 10px;
 }
 .backlink{
@@ -6514,8 +6514,7 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
 }
 
 .field input{
-    float:left;
-    min-width:300px;
+    float:left;    
 }
 .field{
     float: left;
