@@ -3,7 +3,7 @@ class CountriesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @countries = Country.all
+    @countries = Country.all :order => "created_at desc"
   end
 
   def show
@@ -12,15 +12,18 @@ class CountriesController < ApplicationController
 
   def new    
     @country = Country.new
+    @regions = Region.all
     render :layout => false
   end
 
   def edit
+    @regions = Region.all
     @country = Country.find(params[:id])
   end
 
   def create
     @country = Country.new(params[:country])
+    @regions = Region.all
     respond_to do |format|
       if @country.save
         format.js do
@@ -37,6 +40,7 @@ class CountriesController < ApplicationController
 
   def update
     @country = Country.find(params[:id])
+    @regions = Region.all
     respond_to do |format|
       if @country.update_attributes(params[:country])
         format.js do

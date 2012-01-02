@@ -3,9 +3,18 @@
     <%= render :partial => "/shared/error_messages", :locals => { :object => @country } %>
   </div>
   <div class="field">
+    <%= f.label :region_id, "Region" %>
+    <%= f.select :region_id, "<option value="">Please select region</option>" + options_from_collection_for_select(@regions, :id, :name),{}, :style => "width:200px;" %>
+  </div>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :code, "Country Code" %>
+    <%= f.text_field :code %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -14,8 +14,11 @@ Namloos::Application.routes.draw do
   resources :countries
 
   resources :privileges
+
   resources :groups
+
   resources :site_users
+  
   match 'site_users/assign_privileges/:id' => 'site_users#assign_privileges'
   match 'site_users/create' => 'site_users#create'
   match 'site_users/show/:id' => 'site_users#show'

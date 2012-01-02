@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20111230102111) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "region_id"
   end
 
   create_table "extension_users", :force => true do |t|
