@@ -2002,7 +2002,7 @@ body.blue p.domain_hint strong {
     margin-right: 30px;
 }
 .settings, .users {
-/*    padding-top: 30px;*/
+    /*    padding-top: 30px;*/
 }
 div.first_fields, div.second_fields {
     float: left;
@@ -6519,4 +6519,9 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
 .field{
     float: left;
     width: 100%;
+}
+.functional_link{
+    color: #125AA7;
+    text-decoration: none;
+    font-size: 12px;
 }

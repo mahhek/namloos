@@ -1,4 +1,4 @@
-<h3>Countries&nbsp;&nbsp;&nbsp;<%= link_to_function '+', "fetch_object('#{new_country_path}')", :style => "text-decoration:none;" %></h3>
+<h3>Countries&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_country_path}');", :class => "functional_link" %></h3>
 <div style="background-color: #eeeeee;float: left;" id="add_edit_form">
 
 </div>
@@ -12,9 +12,8 @@
   <% @countries.each do |country| %>
     <tr>
       <td width="500"><%= country.name %></td>
-      <td><%= link_to_function 'Edit', "fetch_object('#{edit_country_path(country)}')", :style => "text-decoration:none;" %></td>
-      <td><%= link_to (image_tag 'trash.png'), country, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to_function 'Edit', "fetch_object('#{edit_country_path(country)}')", :class => "functional_link"  %></td>
+      <td><%= link_to image_tag('trash.png'), country_path(country), :confirm =>'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-

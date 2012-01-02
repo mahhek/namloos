@@ -1,10 +1,9 @@
 function fetch_object(url){
-    $.ajax({
+    jQuery.ajax({
         type:"GET",
         url: url,
-        datatype: "html",
         success: function (response) {
-            $("#add_edit_form").html(response);
+            jQuery("#add_edit_form").html(response);
         }
     });
 }
