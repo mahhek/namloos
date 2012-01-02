@@ -1,76 +1,63 @@
-<%= form_for(@seller_rate) do |f| %>  
-  <% if @seller_rate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@seller_rate.errors.count, "error") %> prohibited this seller_rate from being saved:</h2>
-
-      <ul>
-        <% @seller_rate.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :valid_from, 'Valid From' %>
-    <%= f.text_field :valid_from %>
-    <script type="text/javascript">
-      $(function()
-      {
-      $("#seller_rate_valid_from").datePicker();
-      });
-    </script>
+<%= form_for(@seller_rate, :remote =>  true) do |f| %>  
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @seller_rate } %>
   </div>
 
   <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :valid_to, 'Valid To' %>
-    <%= f.text_field :valid_to %>
-    <script type="text/javascript">
-      $(function()
-      {
-      $("#seller_rate_valid_to").datePicker();
-      });
-    </script>
-  </div>
-
-  <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :country_id %>
-    <%= f.select :country_id, options_from_collection_for_select(@countries, :id, :name, @seller_rate.country_id), {:prompt => "Select Country"}, :style => "width:300px;" %>
-  </div>
-
-  <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :apply_to_id %>
-    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @seller_rate.apply_to_id), {:prompt => "Select Apply To"}, :style => "width:300px;" %>
+    <%= f.label :prefix %>
+    <%= f.text_field :prefix %>
   </div>
 
   <div class="field" style="margin-bottom: 10px;">
     <%= f.label :region_id %>
-    <%= f.select :region_id, options_from_collection_for_select(@regions, :id, :name, @seller_rate.region_id), {:prompt => "Select Region"}, :style => "width:300px;" %>
+    <%= f.select :region_id, options_from_collection_for_select(@regions, :id, :name, @seller_rate.region_id), {:prompt => "Select Region"}, :style => "width:200px;" %>
+  </div>
+
+  <div class="field" id="countries" style="margin-bottom: 10px;">
+    <%= render :partial => "/shared/countries", :locals => {:countries => @countries}  %>
   </div>
 
   <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :prefix_id %>
-    <%= f.select :prefix_id, options_from_collection_for_select(@prefixes, :id, :name, @seller_rate.prefix_id), {:prompt => "Select Prefix"}, :style => "width:300px;" %>
+    <%= f.label :call_defination_id %>
+    <%= f.select :call_defination_id, options_from_collection_for_select(@call_definations, :id, :name, @seller_rate.call_defination_id), {:prompt => "Select Call Defination"}, :style => "width:200px;" %>
   </div>
 
   <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :callgroup_id %>
-    <%= f.select :callgroup_id, options_from_collection_for_select(@call_groups, :id, :name, @seller_rate.callgroup_id), {:prompt => "Select Call Group"}, :style => "width:300px;" %>
+    <%= f.label :apply_to_id %>
+    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @seller_rate.apply_to_id), {:prompt => "Select Apply To"}, :style => "width:200px;" %>
   </div>
 
   <div class="field" style="margin-bottom: 10px;">
     <%= f.label :start_rate %>
     <%= f.text_field :start_rate %>
   </div>
-  <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :call_defination_id %>
-    <%= f.select :call_defination_id, options_from_collection_for_select(@call_definations, :id, :name, @seller_rate.call_defination_id), {:prompt => "Select Call Defination"}, :style => "width:300px;" %>
-  </div>
+
 
   <div class="field" style="margin-bottom: 10px;">
     <%= f.label :rate_per_minute %>
     <%= f.text_field :rate_per_minute %>
   </div>
+
+
+
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :valid_from, 'Valid From' %>
+    <%= f.text_field :valid_from, :style => "width:200px;" %>
+  </div>
+
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :valid_to, 'Valid To' %>
+    <%= f.text_field :valid_to, :style => "width:200px;" %>
+  </div>
+
+
+
+
+
+
+
+
+
 
   <div class="field" style="margin-bottom: 10px;">
     <%= f.label :end_rate %>
@@ -86,3 +73,20 @@
     <%= f.submit %>
   </div>
 <% end %>
+<script type="text/javascript">
+  $("#seller_rate_valid_from").datePicker();
+  $("#seller_rate_valid_to").datePicker();
+    
+  $('#seller_rate_region_id').change(function() {
+    var region_id = $('#seller_rate_region_id').val();
+    if (region_id == '') {
+      return;
+    }
+    $.ajax({
+      type:"GET",
+      url: '/get_countries/'+region_id,
+      success: function (response) {        
+      }
+    });
+  });
+</script>

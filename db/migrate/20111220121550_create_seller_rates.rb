@@ -4,8 +4,8 @@ class CreateSellerRates < ActiveRecord::Migration
       t.integer :country_id
       t.integer :apply_to_id
       t.integer :region_id
-      t.integer :prefix_id
-      t.integer :callgroup_id
+      t.string  :prefix
+      t.string :callgroup
       t.string :start_rate, :default => "0"
       t.integer :call_defination_id
       t.string :rate_per_minute, :default => "1"

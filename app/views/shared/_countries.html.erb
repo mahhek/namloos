@@ -1,0 +1,2 @@
+<label for="seller_rate_country_id">Country</label>
+<%= collection_select :seller_rate, :country_id, countries, :id, :name, {:prompt => countries.blank? ? 'Select Region First' : 'Select Country'}, {:style => "width:200px;"} %>

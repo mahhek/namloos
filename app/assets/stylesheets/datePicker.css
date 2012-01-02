@@ -133,13 +133,16 @@ div.dp-popup td.disabled {
 */
 a.dp-choose-date {
     float: left;
-    height: 28px;
-    width: 32px;
+    height: 26px;
+    width: 25px;
     display: block;
     text-indent: -2000px;
     overflow: hidden;
-    background: url(calander.jpeg) no-repeat;
+    background: url(calander.png) no-repeat;
+    margin-left: 5px;
+    margin-top: -2px;
 }
+
 a.dp-choose-date.dp-disabled {
     background-position: 0 -20px;
     cursor: default;

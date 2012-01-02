@@ -1,9 +1,21 @@
 class CountriesController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
-
+  
   def index
-    @countries = Country.all :order => "created_at desc"
+    @countries =  Country.all
+  end
+
+  def get_countries
+    @region = Region.find_by_id(params[:region_id])
+    @countries = @region.nil? ? [] : @region.countries
+    
+    respond_to do |format|
+      format.js do
+        foo = render_to_string(:partial => '/shared/countries', :locals => { :countries => @countries }).to_json
+        render :js => "$('#countries').html(#{foo})"
+      end
+    end
   end
 
   def show
@@ -26,6 +38,7 @@ class CountriesController < ApplicationController
     @regions = Region.all
     respond_to do |format|
       if @country.save
+        flash[:notice] = "Country created successfully!."
         format.js do
           render :js => "window.location='/countries'"
         end
@@ -43,6 +56,7 @@ class CountriesController < ApplicationController
     @regions = Region.all
     respond_to do |format|
       if @country.update_attributes(params[:country])
+        flash[:notice] = "Country updated successfully!"
         format.js do
           render :js => "window.location='/countries'"
         end
@@ -65,4 +79,5 @@ class CountriesController < ApplicationController
     end
     redirect_to countries_url
   end
+
 end

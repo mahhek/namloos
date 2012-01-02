@@ -1,38 +1,33 @@
-<h3>Seller Rates&nbsp;&nbsp;&nbsp;<%= link_to '+', new_seller_rate_path, :remote =>  true, :style => "text-decoration:none;" %></h3>
+<h3>Seller Rates&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_seller_rate_path}');", :class => "functional_link" %></h3>
+<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
 
+</div>
 <table  class="datatable">
   <tr style="border-bottom: 1px solid #999999;">
-    <th style="width: 8%;">Valid From</th>
-    <th style="width: 8%;">Valid to</th>
-    <th style="width: 7%;">Country</th>
-    <th style="width: 7%;">Apply to</th>
-    <th style="width: 7%;">Region</th>
     <th style="width: 7%;">Prefix</th>
-    <th style="width: 7%;">Callgroup</th>
+    <th style="width: 8%;">Call Group</th>
+    <th style="width: 8%;">Applied To</th>
     <th style="width: 7%;">Start Rate</th>
+    <th style="width: 7%;">Rate per/min.</th>
     <th style="width: 7%;">End Rate</th>
-    <th style="width: 7%;">Call defination</th>
-    <th style="width: 7%;">Rate/min.</th>
-    <th style="width: 7%;">Call/Secs</th>
+    <th style="width: 7%;">Call p/s</th>
+    <th style="width: 7%;">Valid From </th>
+    <th style="width: 7%;">Valid To</th>
     <th style="width: 7%;"></th>
     <th style="width: 7%;"></th>
   </tr>
 
   <% @seller_rates.each do |seller_rate| %>
     <tr>
-      <td style="width: 8%;"><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></td>
-      <td style="width: 8%;"><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank? %></td>
-      <td style="width: 7%;"><%= seller_rate.country.name %></td>
+      <td style="width: 8%;"><%= seller_rate.prefix %></td>
+      <td style="width: 8%;"><%= seller_rate.callgroup %></td>
       <td style="width: 7%;"><%= seller_rate.apply_to.name %></td>
-      <td style="width: 7%;"><%= seller_rate.region.name unless seller_rate.region.blank?%></td>
-      <td style="width: 7%;"><%= seller_rate.prefix.name %></td>
-      <td style="width: 7%;"><%= seller_rate.callgroup.name %></td>
       <td style="width: 7%;"><%= seller_rate.start_rate %></td>
       <td style="width: 7%;"><%= seller_rate.end_rate %></td>
-      <td style="width: 7%;"><%= seller_rate.call_defination.name %></td>
-      <td style="width: 7%;"><%= seller_rate.rate_per_minute %></td>
       <td style="width: 7%;"><%= seller_rate.call_per_second %></td>
-      <td style="width: 7%;"><%= link_to (image_tag 'edit-icon-small.gif'), edit_seller_rate_path(seller_rate) %></td>
+      <td style="width: 7%;"><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank? %><%= seller_rate.rate_per_minute %></td>
+      <td style="width: 7%;"><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></td>
+      <td style="width: 7%;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_seller_rate_path(seller_rate)}')", :class => "functional_link"  %></td>
       <td style="width: 7%;"><%= link_to (image_tag 'trash.png'), seller_rate, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>
