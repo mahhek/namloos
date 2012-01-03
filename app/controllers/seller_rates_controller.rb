@@ -3,7 +3,7 @@ class SellerRatesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @seller_rates = SellerRate.all
+    @seller_rates = SellerRate.all :order => 'created_at DESC'
   end
 
   def show

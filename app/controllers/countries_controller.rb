@@ -3,7 +3,8 @@ class CountriesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @countries =  Country.all
+    @countries =  Country.all :order => 'created_at DESC'
+
   end
 
   def get_countries

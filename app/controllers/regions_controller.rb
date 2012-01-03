@@ -3,7 +3,7 @@ class RegionsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @regions = Region.all
+    @regions = Region.all :order => 'created_at DESC'
   end
   
   def show

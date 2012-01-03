@@ -1,0 +1,36 @@
+<h3><%= "Register for Namloos" %></h3>
+
+<%= form_for @user, :url => "/site_users/create" do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this seller_rate from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field" style="margin-bottom: 10px"><%= f.label :email %>
+    <%= f.email_field :email %></div>
+
+  <div class="field" style="margin-bottom: 10px"><%= f.label :password %>
+    <%= f.password_field :password %></div>
+
+  <div class="field" style="margin-bottom: 10px"><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %></div>
+
+  <div class="field" style="margin-bottom: 10px"><%= f.label :group %>
+    <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name") %>
+  </div>
+
+<p><b style="width: 150px; float: left;">Extensions</b>
+    <% @extensions.each do|e| %>
+      <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false %>
+      <%= e.name %>
+    <% end %>
+  </p>
+  <div class="actions" style="margin-right: 177px;"><%= f.submit "Sign up" %></div>
+<% end %>
