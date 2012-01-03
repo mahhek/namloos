@@ -6,10 +6,13 @@
 <p>
   <%= form_for @user, :url => "/site_users/user_privileges/#{@user.id}" do|f| %>
     <% @privileges.each do|p| %>
-      <%= check_box_tag "privileges[#{p.name}]", p.name,@user.privileges.include?(p)? true : false %>
-      <b><%= p.name %></b>
-    <% end %>
-    <br />
-    <%= f.submit "Assign" %>
+    <div style="float: left;width: auto;float: left;">
+      <span style="float: left;margin-top: 3px;"><%= check_box_tag "privileges[#{p.name}]", p.name,@user.privileges.include?(p)? true : false %></span>
+      &nbsp;
+      <span style="float: left;margin-left: 5px;"><%= p.name %></span><br/>
+    </div>
   <% end %>
+  <br />
+  <div class="actions" style="margin-right: 177px;"><%= f.submit "Assign" %></div>
+<% end %>
 </p>

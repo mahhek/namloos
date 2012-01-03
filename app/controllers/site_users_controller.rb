@@ -37,14 +37,21 @@ class SiteUsersController < ApplicationController
 
       end
     end
-    if success && @user.errors.empty?
-      redirect_to('/')
-      flash[:notice] = "User created successfully"
-    else
-      @extensions = Extension.all
-      @groups = Group.all
-      #      flash[:error]  = "We couldn't set up that account, sorry.  Please try again."
-      render :action => 'new'
+
+    respond_to do |format|
+      if success && @user.errors.empty?
+        flash[:notice] = "User created successfully!."
+        format.js do
+          render :js => "window.location='/site_users'"
+        end
+      else
+        @extensions = Extension.all
+        @groups = Group.all        
+        format.js do
+          foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @user }).to_json
+          render :js => "$('#error_messages').html(#{foo})"
+        end
+      end
     end
   end
 
@@ -69,33 +76,43 @@ class SiteUsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-    if @user.valid?
-      if @user && @user.update_attributes(params[:user])
-        if !params[:role].blank? && !params[:extensions].blank?
-          @user.groups.delete_all
-          @user.extensions.delete_all
+    respond_to do |format|
+      if @user.valid?
+        if @user && @user.update_attributes(params[:user])
+          if !params[:role].blank? && !params[:extensions].blank?
+            @user.groups.delete_all
+            @user.extensions.delete_all
       
-          groups = Group.find(params[:role])
-          @user.groups << groups
+            groups = Group.find(params[:role])
+            @user.groups << groups
 
-          params[:extensions].each do|e|
-            extension = Extension.find_by_name(e)
-            @user.extensions << extension
+            params[:extensions].each do|e|
+              extension = Extension.find_by_name(e)
+              @user.extensions << extension
+            end
           end
-        end          
-        flash[:notice] = "User updated successfully!"
-        redirect_to "/site_users"
+          flash[:notice] = "User updated successfully!"
+          format.js do
+            render :js => "window.location='/site_users'"
+          end
+        else
+          @extensions = Extension.all
+          @groups = Group.all
+          flash[:error] = "User can't be updated. Please try again or later."
+          format.js do
+            foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @user}).to_json
+            render :js => "$('#error_messages').html(#{foo})"
+          end
+        end
       else
         @extensions = Extension.all
         @groups = Group.all
         flash[:error] = "User can't be updated. Please try again or later."
-        render :action => "edit"
+        format.js do
+          foo = render_to_string(:partial => '/shared/error_messages', :locals => { :object => @user }).to_json
+          render :js => "$('#error_messages').html(#{foo})"
+        end
       end
-    else
-      @extensions = Extension.all
-      @groups = Group.all
-      flash[:error] = "User can't be updated. Please try again or later."
-      render :action => "edit"
     end
   end
 
