@@ -12,7 +12,7 @@
   <% @apply_tos.each do |apply_to| %>
     <tr>
       <td width="500"><%= apply_to.name %></td>
-      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_apply_to_path(apply_to) %></td>
+      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_apply_to_path(apply_to)}')", :class => "functional_link"  %></td>
       <td><%= link_to (image_tag 'trash.png'), apply_to, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>

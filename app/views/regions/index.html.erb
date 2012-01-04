@@ -15,9 +15,9 @@
   <% @regions.each do |region| %>
     <tr>
       <td><%= region.name %></td>
-      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_region_path(region) %></td>
+      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_region_path(region)}')", :class => "functional_link"  %></td>
       <td><%= link_to (image_tag 'trash.png'), region, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
-   <% end %>
+  <% end %>
 </table>
 

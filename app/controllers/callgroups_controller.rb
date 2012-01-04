@@ -57,13 +57,8 @@ class CallgroupsController < ApplicationController
 
   def destroy
     @callgroup = Callgroup.find(params[:id])
-
-    if @callgroup.seller_rates.count > 0
-      flash[:error] = "Call group cannot be deleted, It has some seller rates against it!"
-    else
-      @callgroup.destroy
-      flash[:notice] = "Call group deleted successfully!"
-    end    
+    @callgroup.destroy
+    flash[:notice] = "Call group deleted successfully!"
     redirect_to callgroups_url
       
   end

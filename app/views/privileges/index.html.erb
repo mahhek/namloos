@@ -13,7 +13,7 @@
   <% @privileges.each do |privilege| %>
     <tr>
       <td width="500"><%= privilege.name %></td>
-      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_privilege_path(privilege) %></td>
+      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_privilege_path(privilege)}')", :class => "functional_link"  %></td>
       <td><%= link_to (image_tag 'trash.png'), privilege, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>

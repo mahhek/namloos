@@ -12,7 +12,7 @@
   <% @groups.each do |group| %>
     <tr>
       <td width="500"><%= group.name %></td>
-      <td><%= link_to (image_tag 'edit-icon-small.gif'), edit_group_path(group) %></td>
+      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_group_path(group)}')", :class => "functional_link"  %></td>
       <td><%= link_to (image_tag 'trash.png'), group, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
