@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120102121649) do
+ActiveRecord::Schema.define(:version => 20120105074554) do
 
   create_table "apply_tos", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,29 @@ ActiveRecord::Schema.define(:version => 20120102121649) do
     t.datetime "updated_at"
     t.string   "code"
     t.integer  "region_id"
+  end
+
+  create_table "customers", :force => true do |t|
+    t.string   "company"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "attn"
+    t.string   "sending_method"
+    t.string   "address"
+    t.integer  "zip_code"
+    t.string   "city"
+    t.string   "country"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "client_number"
+    t.string   "tax_number"
+    t.string   "coc"
+    t.string   "bank_account"
+    t.string   "extensions"
+    t.string   "account_code"
+    t.integer  "rate_class"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "extension_users", :force => true do |t|

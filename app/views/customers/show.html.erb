@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company:</b>
+  <%= @customer.company %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @customer.first_name %>
+</p>
+
+<p>
+  <b>last name:</b>
+  <%= @customer.last_name %>
+</p>
+
+<p>
+  <b>Attn:</b>
+  <%= @customer.attn %>
+</p>
+
+<p>
+  <b>Sending method:</b>
+  <%= @customer.sending_method %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @customer.address %>
+</p>
+
+<p>
+  <b>Zip code:</b>
+  <%= @customer.zip_code %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @customer.city %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @customer.country %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @customer.phone %>
+</p>
+
+<p>
+  <b>Client number:</b>
+  <%= @customer.client_number %>
+</p>
+
+<p>
+  <b>Tax number:</b>
+  <%= @customer.tax_number %>
+</p>
+
+<p>
+  <b>Coc:</b>
+  <%= @customer.coc %>
+</p>
+
+<p>
+  <b>Bank account:</b>
+  <%= @customer.bank_account %>
+</p>
+
+<p>
+  <b>Extensions:</b>
+  <%= @customer.extensions %>
+</p>
+
+<p>
+  <b>Account code:</b>
+  <%= @customer.account_code %>
+</p>
+
+<p>
+  <b>Rate class:</b>
+  <%= @customer.rate_class %>
+</p>
+
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

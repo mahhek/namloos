@@ -1,5 +1,7 @@
 Namloos::Application.routes.draw do
 
+  resources :customers
+
   resources :seller_rates
 
   resources :call_definations
@@ -18,6 +20,7 @@ Namloos::Application.routes.draw do
   resources :countries
   resources :regions
 
+  
   match '/get_countries/:region_id' => "countries#get_countries"
   
   match 'site_users/assign_privileges/:id' => 'site_users#assign_privileges'

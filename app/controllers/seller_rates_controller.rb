@@ -45,7 +45,7 @@ class SellerRatesController < ApplicationController
 
     respond_to do |format|
       if @seller_rate.update_attributes(params[:seller_rate])
-        flash[:notice] = "Counry updated successfully!"
+        flash[:notice] = "Country updated successfully!"
         format.js do
           render :js => "window.location='/seller_rates'"
         end

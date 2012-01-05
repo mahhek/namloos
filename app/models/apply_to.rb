@@ -4,4 +4,6 @@ class ApplyTo < ActiveRecord::Base
 
   has_many :seller_rates
 
+  has_many :customers
+
 end

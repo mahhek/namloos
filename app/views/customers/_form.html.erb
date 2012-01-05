@@ -1,0 +1,110 @@
+
+<%= form_for(@customer, :remote =>  true) do |f| %>
+
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @customer } %>
+  </div>
+
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <div style="float:left;">
+      <label>First & Last Name</label>
+    </div>
+    <div style="float:left;width:20px;">
+      <%= f.text_field :first_name, :style=>["width:120px"] %>
+    </div>
+    <div style="float:left;width:20px;margin-left: 105px">
+      <%= f.text_field :last_name, :style=>["width:120px"] %>
+    </div>
+  </div>
+
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :attn %>
+    <%= f.text_field :attn %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :sending_method %>
+    <%= f.text_field :sending_method %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+
+  <div class="field" style="margin-bottom: 5px;">
+    <div style="float:left;">
+      <label>Zip Code & City</label>
+    </div>
+    <div style="float:left;width:20px;">
+      <%= f.number_field :zip_code, :style=>["width:60px"] %>
+    </div>
+    <div style="float:left;width:20px;margin-left: 45px">
+      <%= f.text_field :city, :style=>["width:120px"] %>
+    </div>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :client_number %>
+    <%= f.text_field :client_number %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :tax_number %>
+    <%= f.text_field :tax_number %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <div style="float:left;">
+      <label> Chamber of Commerce</label>
+    </div>
+    <%= f.text_field :coc %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :bank_account %>
+    <%= f.text_field :bank_account %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :extensions %>
+    <%= f.text_field :extensions %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <%= f.label :account_code %>
+    <%= f.text_field :account_code %>
+  </div>
+
+  <div class="field" style="margin-bottom: 5px;">
+    <label> Rate Classification</label>
+    <%= f.number_field :rate_class %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

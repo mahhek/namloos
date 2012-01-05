@@ -1,0 +1,60 @@
+<h3>Contacts&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_customer_path}');", :class => "functional_link" %></h3>
+<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
+
+</div>
+<table  class="datatable">
+  <tr style="border-bottom: 1px solid #999999;">
+    <th style="width: 8%;">Company</th>
+    <th style="width: 7%;">First name</th>
+    <th style="width: 7%;">Last name</th>
+    <th style="width: 7%;">Attn</th>
+    <th style="width: 7%;">Sending method</th>
+    <th style="width: 7%;">Address</th>
+    <th style="width: 7%;">Zip code</th>
+    <th style="width: 7%;">City</th>
+    <th style="width: 7%;">Country</th>
+    <th style="width: 7%;">Email</th>
+    <th style="width: 7%;">Phone</th>
+    <th style="width: 7%;">Client number</th>
+    <th style="width: 7%;">Tax number</th>
+    <th style="width: 7%;">Chamber of Commerce</th>
+    <th style="width: 7%;">Bank account</th>
+    <th style="width: 7%;">Extensions</th>
+    <th style="width: 7%;">Account code</th>
+    <th style="width: 7%;">Rate class</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customers.each do |customer| %>
+  <tr>
+    <td style="width: 8%;"><%= customer.company %></td>
+    <td style="width: 7%;"><%= customer.first_name %></td>
+    <td style="width: 7%;"><%= customer.last_name %></td>
+    <td style="width: 7%;"><%= customer.attn %></td>
+    <td style="width: 7%;"><%= customer.sending_method %></td>
+    <td style="width: 7%;"><%= customer.address %></td>
+    <td style="width: 7%;"><%= customer.zip_code %></td>
+    <td style="width: 7%;"><%= customer.city %></td>
+    <td style="width: 7%;"><%= customer.country %></td>
+    <td style="width: 7%;"><%= customer.email %></td>
+    <td style="width: 7%;"><%= customer.phone %></td>
+    <td style="width: 7%;"><%= customer.client_number %></td>
+    <td style="width: 7%;"><%= customer.tax_number %></td>
+    <td style="width: 7%;"><%= customer.coc %></td>
+    <td style="width: 7%;"><%= customer.bank_account %></td>
+    <td style="width: 7%;"><%= customer.extensions %></td>
+    <td style="width: 7%;"><%= customer.account_code %></td>
+    <td style="width: 7%;"><%= customer.rate_class %></td>
+
+    <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_customer_path(customer)}')", :class => "functional_link"  %></td>
+    <td><%= link_to image_tag('trash.png'), customer_path(customer), :confirm =>'Are you sure?', :method => :delete %></td>
+
+  </tr>
+<% end %>
+</table>
+
+
+
+

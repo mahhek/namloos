@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company: MyString
+  first_name: MyString
+  last_name: MyString
+  attn: MyString
+  sending_method: MyString
+  address: MyString
+  zip_code: 1
+  city: MyString
+  country: MyString
+  email: MyString
+  phone: MyString
+  client_number: MyString
+  tax_number: MyString
+  coc: MyString
+  bank_account: MyString
+  extensions: MyString
+  account_code: MyString
+  rate_class: 1
+
+two:
+  company: MyString
+  first_name: MyString
+  last_name: MyString
+  attn: MyString
+  sending_method: MyString
+  address: MyString
+  zip_code: 1
+  city: MyString
+  country: MyString
+  email: MyString
+  phone: MyString
+  client_number: MyString
+  tax_number: MyString
+  coc: MyString
+  bank_account: MyString
+  extensions: MyString
+  account_code: MyString
+  rate_class: 1
