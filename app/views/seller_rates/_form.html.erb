@@ -39,7 +39,6 @@
   </div>
 
 
-
   <div class="field" style="margin-bottom: 10px;">
     <%= f.label :valid_from, 'Valid From' %>
     <%= f.text_field :valid_from, :style => "width:200px;" %>
@@ -66,19 +65,19 @@
   </div>
 <% end %>
 <script type="text/javascript">
-  $("#seller_rate_valid_from").datePicker();
-  $("#seller_rate_valid_to").datePicker();
-    
+  $('#seller_rate_valid_from').datepick({ yearRange: 'c-10:c+10', showTrigger: '#calander.png'});
+  $("#seller_rate_valid_to").datepick({ yearRange: 'c-10:c+10', showTrigger: '#calander.png'});
+
   $('#seller_rate_region_id').change(function() {
-    var region_id = $('#seller_rate_region_id').val();
-    if (region_id == '') {
-      return;
-    }
-    $.ajax({
-      type:"GET",
-      url: '/get_countries/'+region_id,
-      success: function (response) {        
-      }
-    });
+  var region_id = $('#seller_rate_region_id').val();
+  if (region_id == '') {
+  return;
+  }
+  $.ajax({
+  type:"GET",
+  url: '/get_countries/'+region_id,
+  success: function (response) {
+  }
+  });
   });
 </script>
