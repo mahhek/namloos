@@ -30,7 +30,11 @@
 
   <div class="field" style="margin-bottom: 5px;">
     <%= f.label :sending_method %>
-    <%= f.text_field :sending_method %>
+    <span style="float:left">
+      <%= f.radio_button :sending_method, "email" %>&nbsp;E-mail<br/>
+      <%= f.radio_button :sending_method, "money_bird"%>&nbsp;Money Bird (€1/invoice)<br/>
+      <%= f.radio_button :sending_method, "by_hand" %>&nbsp;By Hand<br/>
+    </span>
   </div>
 
   <div class="field" style="margin-bottom: 5px;">
@@ -100,11 +104,12 @@
 
   <div class="field" style="margin-bottom: 5px;">
     <label> Rate Classification</label>
-    <%= f.number_field :rate_class %>
+    <%= f.select :rate_class, options_from_collection_for_select(@apply_tos, :id, :name, @customer.rate_class), {:prompt => "Select Rate Classification"}, :style => "width:200px;" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
+    <%= link_to "Cancel", customers_path, :style => "color:blue;text-decoration:none;" %>
   </div>
 
 <% end %>

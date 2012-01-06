@@ -4,6 +4,8 @@ class SellerRatesController < ApplicationController
 
   def index
     @seller_rates = SellerRate.all :order => 'created_at DESC'
+    @seller_rate = SellerRate.new
+    load_data
   end
 
   def show

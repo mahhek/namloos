@@ -4,6 +4,8 @@ class CustomersController < ApplicationController
 
   def index
     @customers = Customer.all:order => 'created_at DESC'
+    @customer = Customer.new
+    @apply_tos = ApplyTo.all
   end
 
 

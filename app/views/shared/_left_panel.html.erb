@@ -1,6 +1,8 @@
 <div class="settings_navigation">
-  <h4>Rates</h4>
+  <h4>Settings</h4>
+      
   <ul>
+    <li class="<%= params[:controller] == 'seller_rates' ? 'active' : '' %>"><%= link_to "General" %></li>
     <li class="<%= params[:controller] == 'seller_rates' ? 'active' : '' %>"><%= link_to "Seller Rates", seller_rates_path %></li>
     <li class="<%= params[:controller] == 'seller_rates' ? 'active' : '' %>"><%= link_to "Buyer Rates", seller_rates_path %></li>
     <li class="<%= params[:controller] == 'countries' ? 'active' : '' %>"><%= link_to "Countries", countries_path %></li>
