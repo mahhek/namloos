@@ -9,9 +9,9 @@
       <h2><%= pluralize(@apply_to.errors.count, "error") %> prohibited this apply_to from being saved:</h2>
 
       <ul>
-      <% @apply_to.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @apply_to.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -20,7 +20,12 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
+    <%= link_to "Cancel", apply_tos_path, :style => "color:blue;text-decoration:none;" %>
   </div>
+
+
+
 <% end %>

@@ -1,8 +1,13 @@
-<div style="float: left;margin: 10px;">
-<h3>Edit Contact</h3>
+<div style="float: left;">
+  <h3>Edit Contact</h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%#= link_to 'Show', @customer %> 
-<%= link_to 'Back', customers_path %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+  set_cursor('#customer_company');
+  });
+</script>
+

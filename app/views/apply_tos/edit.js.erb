@@ -1,6 +1,12 @@
-<h3>Change Apply To</h3>
+<div style="float: left;">
+  <h3>Change Customer Class</h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
+</div>
 
-<%#= link_to 'Show', @apply_to %> 
-<%= link_to 'Back', apply_tos_path %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+  set_cursor('#apply_to_name');
+  });
+</script>

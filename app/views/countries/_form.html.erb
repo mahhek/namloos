@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :region_id, "Region" %>
-    <%= f.select :region_id, "<option value="">Please select region</option>" + options_from_collection_for_select(@regions, :id, :name),{}, :style => "width:200px;" %>
+    <%= f.select :region_id, "<option value="">Please select region</option>" + options_from_collection_for_select(@regions, :id, :name,@country.region_id),{}, :style => "width:200px;" %>
   </div>
   <div class="field">
     <%= f.label :name %>
@@ -17,6 +17,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
+    <%= link_to "Cancel", countries_path, :style => "color:blue;text-decoration:none;" %>
   </div>
+
+
+
 <% end %>

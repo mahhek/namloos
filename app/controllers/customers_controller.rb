@@ -21,6 +21,7 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    @apply_tos = ApplyTo.all
   end
 
   def create

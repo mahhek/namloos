@@ -4,6 +4,7 @@ class ApplyTosController < ApplicationController
  
   def index
     @apply_tos = ApplyTo.all
+    @apply_to = ApplyTo.new
   end
 
   def show

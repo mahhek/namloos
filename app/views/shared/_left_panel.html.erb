@@ -2,20 +2,23 @@
   <h4>Settings</h4>
       
   <ul>
-    <li class="<%= params[:controller] == 'seller_rates' ? 'active' : '' %>"><%= link_to "General" %></li>
+    <li class="<%= params[:controller] == 'general' ? 'active' : '' %>"><%= link_to "General", seller_rates_path %></li>
     <li class="<%= params[:controller] == 'seller_rates' ? 'active' : '' %>"><%= link_to "Seller Rates", seller_rates_path %></li>
     <li class="<%= params[:controller] == 'seller_rates' ? 'active' : '' %>"><%= link_to "Buyer Rates", seller_rates_path %></li>
     <li class="<%= params[:controller] == 'countries' ? 'active' : '' %>"><%= link_to "Countries", countries_path %></li>
-    <li class="<%= params[:controller] == 'apply_tos' ? 'active' : '' %>"><%= link_to "Apply To", apply_tos_path %></li>
+    <li class="<%= params[:controller] == 'apply_tos' ? 'active' : '' %>"><%= link_to "Customer Class", apply_tos_path %></li>
     <li class="<%= params[:controller] == 'regions' ? 'active' : '' %>"><%= link_to "Regions", regions_path %></li>
-    <li class="<%= params[:controller] == 'prefixes' ? 'active' : '' %>"><%= link_to "Prefixes", prefixes_path %></li>
-    <li class="<%= params[:controller] == 'callgroups' ? 'active' : '' %>"><%= link_to "Call Groups", callgroups_path %></li>
+    <%#*<li class="<%= params[:controller] == 'prefixes' ? 'active' : '' %>
+<%#= link_to "Prefixes", prefixes_path %>
+    <%#*<li class="<%= params[:controller] == 'callgroups' ? 'active' : '' %>
+<%#= link_to "Call Groups", callgroups_path %>
     <li class="<%= params[:controller] == 'call_definations' ? 'active' : '' %>"><%= link_to "Call Definations", call_definations_path %></li>
   </ul>
   <h4>Users/Groups</h4>
   <ul>
     <li class="<%= params[:controller] == 'site_users' ? 'active' : '' %>"><%= link_to "Users", site_users_path %></li>
-    <li class="<%= params[:controller] == 'groups' ? 'active' : '' %>"><%= link_to "Groups", groups_path %></li>
+    <li class="<%= params[:controller] == 'customers' ? 'active' : '' %>"><%= link_to "Customers", customers_path %></li>
+    <li class="<%= params[:controller] == 'groups' ? 'active' : '' %>"><%= link_to "Group", groups_path %></li>
     <li class="<%= params[:controller] == 'privileges' ? 'active' : '' %>"><%= link_to "Privileges", privileges_path %></li>
   </ul>
 </div>

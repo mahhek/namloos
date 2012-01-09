@@ -1,4 +1,4 @@
-<h3>Seller Rates&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_seller_rate_path}');", :class => "functional_link" %></h3>
+<h3>Seller Rates&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "set_cursor('#seller_rate_prefix');", :class => "functional_link" %></h3>
 
 <table  class="datatable">
   <tr style="border-bottom: 1px solid #999999;">
@@ -16,7 +16,7 @@
   </tr>
 
   <% @seller_rates.each do |seller_rate| %>
-    <tr>
+    <tr id="seller_rate_<%= seller_rate.id %>">
       <td style="width: 8%;"><%= seller_rate.prefix %></td>
       <td style="width: 8%;"><%= seller_rate.callgroup %></td>
       <td style="width: 7%;"><%= seller_rate.apply_to.name %></td>
@@ -25,14 +25,16 @@
       <td style="width: 7%;"><%= seller_rate.end_rate %></td>
       <td style="width: 7%;"><%= seller_rate.call_per_second %></td>
       <td style="width: 7%;"><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></td>
-      <td style="width: 7%;"><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank?%>
-      <th style="width: 7%;"></th>
-      <td style="width: 7%;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_seller_rate_path(seller_rate)}')", :class => "functional_link"  %></td>
+      <td style="width: 7%;"><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank?%></td>
+      <td style="width: 7%;"></td>
+      <td style="width: 7%;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_seller_rate_path(seller_rate)}', '#seller_rate_#{seller_rate.id}' )", :class => "functional_link"  %></td>
       <td style="width: 7%;"><%= link_to (image_tag 'trash.png'), seller_rate, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
-
+<div style="background-color: #eeeeee;float: left;padding: 10px;" id="add_edit_form">
+  <h3>New Seller Rate</h3>
+  <%= render 'form' %>
 </div>
+
