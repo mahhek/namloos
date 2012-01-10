@@ -68,19 +68,19 @@
 <% end %>
 
 <script type="text/javascript">
-  $('#seller_rate_valid_from').datepick();
-  $('#seller_rate_valid_to').datepick();
+  $('#seller_rate_valid_from').datepick({ dateFormat: 'yyyy-mm-dd', showTrigger: '#calImg'});
+  $('#seller_rate_valid_to').datepick({ dateFormat: 'yyyy-mm-dd', showTrigger: '#calImg'});
 
   $('#seller_rate_region_id').change(function() {
-  var region_id = $('#seller_rate_region_id').val();
-  if (region_id == '') {
-  return;
-  }
-  $.ajax({
-  type:"GET",
-  url: '/get_countries/'+region_id,
-  success: function (response) {
-  }
-  });
+    var region_id = $('#seller_rate_region_id').val();
+    if (region_id == '') {
+      return;
+    }
+    $.ajax({
+      type:"GET",
+      url: '/get_countries/'+region_id,
+      success: function (response) {
+      }
+    });
   });
 </script>

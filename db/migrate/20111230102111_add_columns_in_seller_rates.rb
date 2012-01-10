@@ -1,8 +1,8 @@
 class AddColumnsInSellerRates < ActiveRecord::Migration
   
   def up
-    add_column :seller_rates, :valid_from, :datetime
-    add_column :seller_rates, :valid_to, :datetime
+    add_column :seller_rates, :valid_from, :date
+    add_column :seller_rates, :valid_to, :date
   end
 
   def down
