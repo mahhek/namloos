@@ -1,22 +1,21 @@
-<h3>Privileges&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_privilege_path}');", :class => "functional_link" %></h3>
+<h3>Privileges&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "set_cursor('#privilege_name');", :class => "functional_link" %></h3>
 
-
-<table width="650" class="datatable">
-  <tr style="border-bottom: 1px solid #999999;">
-    <th>Privileges Types:</th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="datatable" >
+  <div class="datatable_header">
+    <span style="width: 165px;">Privileges Types:</span>
+  </div>
   <% @privileges.each do |privilege| %>
-    <tr>
-      <td width="500"><%= privilege.name %></td>
-      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_privilege_path(privilege)}')", :class => "functional_link"  %></td>
-      <td><%= link_to (image_tag 'trash.png'), privilege, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+
+    <div class="rows" id="privilege_<%= privilege.id %>">
+      <div class="row-column" style="width: 550px;"><%= privilege.name %></div>
+
+      <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_privilege_path(privilege)}', '#privilege_#{privilege.id}' );", :class => "functional_link"  %></div>
+      <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), privilege, confirm: 'Are you sure?', method: :delete %></div>
+    </div>
   <% end %>
-</table>
+</div>
 
-<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
-
+<div class="add_form">
+  <h3>New Privilege</h3>
+  <%= render 'form' %>
 </div>

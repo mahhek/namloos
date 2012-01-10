@@ -1,6 +1,12 @@
+<div class="edit_form" >
 <h3>Edit Privilege</h3>
 
 <%= render 'form' %>
+</div>
 
-<%#= link_to 'Show', @privilege %> 
-<%#= link_to 'Back', privileges_path %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    set_cursor('#privilege_name');
+  });
+</script>
+

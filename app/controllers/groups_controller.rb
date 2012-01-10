@@ -3,7 +3,8 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @groups = Group.all
+    @groups = Group.all:order => 'created_at DESC'
+    @group = Group.new
   end
 
   def show
@@ -57,7 +58,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-
+    flash[:notice] = "Group deleted successfully!"
     redirect_to groups_url
   end
 end

@@ -5,6 +5,7 @@ class CallDefinationsController < ApplicationController
 
   def index
     @call_definations = CallDefination.all
+    @call_defination = CallDefination.new
   end
   
   def show

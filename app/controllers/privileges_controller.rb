@@ -3,7 +3,8 @@ class PrivilegesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @privileges = Privilege.all
+    @privileges = Privilege.all:order => 'created_at DESC'
+    @privilege = Privilege.new
   end
 
   def show
@@ -56,6 +57,7 @@ class PrivilegesController < ApplicationController
   def destroy
     @privilege = Privilege.find(params[:id])
     @privilege.destroy
+    flash[:notice] = "Privilege deleted successfully!"
     redirect_to privileges_url
 
   end

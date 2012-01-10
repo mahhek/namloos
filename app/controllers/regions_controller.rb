@@ -4,6 +4,7 @@ class RegionsController < ApplicationController
 
   def index
     @regions = Region.all :order => 'created_at DESC'
+    @region = Region.new
   end
   
   def show

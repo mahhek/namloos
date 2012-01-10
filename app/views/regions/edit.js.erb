@@ -1,6 +1,11 @@
-<h3>Change Region</h3>
+<div class="edit_form" >
+  <h3>Change Region</h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
+</div>
 
-<%#= link_to 'Show', @region %> 
-<%#= link_to 'Back', regions_path %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    set_cursor('#region_name');
+  });
+</script>

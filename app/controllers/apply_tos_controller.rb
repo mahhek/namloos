@@ -59,10 +59,10 @@ class ApplyTosController < ApplicationController
     @apply_to = ApplyTo.find(params[:id])
     
     if @apply_to.seller_rates.count > 0
-      flash[:error] = "Apply To  cannot be deleted, It has some seller rates against it!"
+      flash[:error] = "Customer Class cannot be deleted, It has some seller rates against it!"
     else
       @apply_to.destroy
-      flash[:notice] = "Apply To is deleted Successfully!"      
+      flash[:notice] = "Customer Class deleted Successfully!"
     end
     redirect_to apply_tos_url
       

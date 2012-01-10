@@ -5,6 +5,9 @@ class SiteUsersController < ApplicationController
     
   def index
     @users = User.all :order => 'created_at DESC'
+    @user = User.new
+    @groups = Group.all
+    @extensions = Extension.all
   end
 
   def show    

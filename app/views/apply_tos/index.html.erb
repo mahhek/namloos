@@ -1,22 +1,23 @@
 <h3>Customer Class&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "set_cursor('#apply_to_name');", :class => "functional_link" %></h3>
 
-<table width="650" class="datatable">
-  <tr style="border-bottom: 1px solid #999999;">
-    <th>Name:</th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="datatable" >
+  <div class="datatable_header">
+    <span style="width: 150px;">Name:</span>
+  </div>
 
   <% @apply_tos.each do |apply_to| %>
-    <tr>
-      <td width="500"><%= apply_to.name %></td>
-      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_apply_to_path(apply_to)}')", :class => "functional_link"  %></td>
-      <td><%= link_to (image_tag 'trash.png'), apply_to, confirm: 'Are you sure?', method: :delete %></td>
-    </tr>
+    <div class="rows" id="apply_to_<%= apply_to.id %>">
+      <div class="row-column" style="width: 500px;"><%= apply_to.name%></div>
+      <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_apply_to_path(apply_to)}', '#apply_to_#{apply_to.id}' );", :class => "functional_link"  %></div>
+      <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), apply_to, confirm: 'Are you sure?', method: :delete %></div>
+    </div>
   <% end %>
-</table>
+</div>
 
-<div style="background-color: #eeeeee;float: left;padding: 10px;" id="add_edit_form">
+
+<div class="add_form">
   <h3>Create Customer Class</h3>
   <%= render 'form' %>
 </div>
+
+

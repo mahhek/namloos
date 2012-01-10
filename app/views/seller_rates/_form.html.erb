@@ -60,11 +60,13 @@
     <%= f.label :call_per_second %>
     <%= f.text_field :call_per_second %>
   </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
+    <%= link_to "Cancel", seller_rates_path, :style => "color:blue;text-decoration:none;" %>
   </div>
+
 <% end %>
+
 <script type="text/javascript">
   $('#seller_rate_valid_from').datepick();
   $('#seller_rate_valid_to').datepick();

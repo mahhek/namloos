@@ -1,6 +1,10 @@
-<h3>Change Call Definition</h3>
+<div class="edit_form" >
+  <h3>Change Call Definition</h3>
+  <%= render 'form' %>
+</div>
 
-<%= render 'form' %>
-
-<%#= link_to 'Show', @call_defination %> 
-<%#= link_to 'Back', call_definations_path %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    set_cursor('#call_defination_name');
+  });
+</script>

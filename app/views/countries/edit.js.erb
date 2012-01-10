@@ -1,7 +1,12 @@
-<div style="float: left;margin: 10px;">
+<div class="edit_form" >
   <h3>Change Country</h3>
 
   <%= render 'form' %>
 
-  <%#= link_to 'Cancel', countries_path ,:class=>"backlink"  %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+  set_cursor('#country_name');
+  });
+</script>

@@ -4,7 +4,8 @@ class CountriesController < ApplicationController
   
   def index
     @countries =  Country.all :order => 'created_at DESC'
-
+    @country = Country.new
+    @regions = Region.all
   end
 
   def get_countries

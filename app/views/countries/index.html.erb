@@ -1,25 +1,26 @@
-<h3>Countries&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "fetch_object('#{new_country_path}');", :class => "functional_link" %></h3>
+<h3>Countries&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "set_cursor('#country_name');", :class => "functional_link" %></h3>
 
-<table width="650" class="datatable">
-  <tr style="border-bottom: 1px solid #999999;">
-    <th>Region:</th>
-    <th>Name:</th>
-    <th>Code</th>
-    <th></th>
-    <th></th>
-  </tr>
+
+<div class="datatable" >
+  <div class="datatable_header">
+    <span style="width: 200px;">Region</span>
+    <span style="width: 165px;">Name</span>
+    <span style="width: 165px;">Code </span>
+  </div>
 
   <% @countries.each do |country| %>
-    <tr>
-      <td><%= country.region.name if country.region%></td>
-      <td><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_country_path(country)}')", :class => "functional_link"  %></td>
-      <td><%= link_to image_tag('trash.png'), country_path(country), :confirm =>'Are you sure?', :method => :delete %></td>
-    </tr>
+
+    <div class="rows" id="country_<%= country.id %>">
+      <div class="row-column" style="width: 200px;"><%= country.region.name if country.region%></div>
+      <div class="row-column" style="width: 165px;"><%= country.name %></div>
+      <div class="row-column" style="width: 165px;"><%= country.code %></div>
+      <div class="row-column" style="width: 30px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_country_path(country)}', '#country_#{country.id}' );", :class => "functional_link"  %></div>
+      <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), country, confirm: 'Are you sure?', method: :delete %></div>
+    </div>
   <% end %>
-</table>
+</div>
 
-<div style="background-color: #eeeeee;float: left;" id="add_edit_form">
-
+<div class="add_form">
+  <h3>New Country</h3>
+  <%= render 'form' %>
 </div>

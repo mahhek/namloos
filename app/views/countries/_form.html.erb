@@ -1,4 +1,5 @@
 <%= form_for(@country, :remote =>  true) do |f| %>
+
   <div style="float: left;width: 100%;" id="error_messages">
     <%= render :partial => "/shared/error_messages", :locals => { :object => @country } %>
   </div>
@@ -16,11 +17,12 @@
     <%= f.text_field :code %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
-    <%= link_to "Cancel", countries_path, :style => "color:blue;text-decoration:none;" %>
-  </div>
 
-
+<div class="actions">
+  <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
+  <%= link_to "Cancel", countries_path, :style => "color:blue;text-decoration:none;" %>
+</div>
 
 <% end %>
+
+
