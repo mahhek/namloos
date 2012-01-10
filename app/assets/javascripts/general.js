@@ -3,8 +3,8 @@ function fetch_object(url, replacer_id){
         type:"GET",
         url: url,
         success: function (response) {
-            jQuery('#add_edit_form').hide();
-            jQuery(replacer_id).replaceWith(response);
+            jQuery('.add_form').hide();
+            jQuery(replacer_id).html(response);
         }
     });
 }

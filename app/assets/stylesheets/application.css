@@ -6491,6 +6491,16 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
     color: #0066CC;
     font-weight: bold;
 }
+.datatable_header{
+    width: 650px;border-bottom: 1px solid #999999;float: left;
+}
+.datatable_header span{
+    background-color: #ffffff;
+    color: #0066CC;
+    font-weight: bold;
+    float:left;
+    padding: 5px 3px;
+}
 
 .datatable td{
     background-color: #FFFFFF;
@@ -6498,9 +6508,26 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
     border-bottom: 1px solid #EEEEEE;
     padding: 5px 3px;
 }
+.rows{
+    float: left;width: 650px;height: auto;
+    background-color: #FFFFFF;
+    color: #000;
+    border-bottom: 1px solid #EEEEEE;
+}
+.row-column{
+    padding: 5px 3px;
+    float: left;
+    height: 100%;
+}
+.add_form{
+    background-color: #eeeeee;float: left;padding: 10px;margin-top: 10px;
+}
+.edit_form{
+    background-color: #eeeeee;float: left;padding: 10px;margin-top: 10px;
+}
 
 .actions{
-    float: right;
+    float: right !important;
     margin-right: 315px;
     margin-top: 10px;
 }
