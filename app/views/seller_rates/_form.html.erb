@@ -20,12 +20,14 @@
 
   <div class="field" style="margin-bottom: 10px;">
     <%= f.label :call_defination_id %>
-    <%= f.select :call_defination_id, options_from_collection_for_select(@call_definations, :id, :name, @seller_rate.call_defination_id), {:prompt => "Select Call Defination"}, :style => "width:200px;" %>
+    <%= f.select :call_defination_id, options_from_collection_for_select(@call_definations, :id, :name, @seller_rate.call_defination_id), {:prompt => "Select Call Definition"}, :style => "width:200px;" %>
   </div>
 
-  <div class="field" style="margin-bottom: 10px;">
-    <%= f.label :apply_to_id %>
-    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @seller_rate.apply_to_id), {:prompt => "Select Apply To"}, :style => "width:200px;" %>
+  <div class="field" style="margin-bottom: 5px;">
+    <div style="float:left;">
+      <label> Customer Class</label>
+    </div>
+    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @seller_rate.apply_to_id), {:prompt => "Select Customer class"}, :style => "width:200px;" %>
   </div>
 
   <div class="field" style="margin-bottom: 10px;">

@@ -6521,9 +6521,14 @@ table.users span.user_state.accountant, table.users span.user_type.accountant {
 }
 .add_form{
     background-color: #eeeeee;float: left;padding: 10px;margin-top: 10px;
+    border: 1px solid #636466;
+    border-radius: 5px 5px 5px 5px;
 }
 .edit_form{
     background-color: #eeeeee;float: left;padding: 10px;margin-top: 10px;
+    border: 1px solid #636466;
+    border-radius: 5px 5px 5px 5px;
+
 }
 
 .actions{

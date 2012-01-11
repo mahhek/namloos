@@ -126,13 +126,13 @@ ActiveRecord::Schema.define(:version => 20120105074554) do
     t.string   "call_per_second",    :default => "1"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "valid_from"
-    t.datetime "valid_to"
+    t.date     "valid_from"
+    t.date     "valid_to"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                                :null => false
+    t.string   "encrypted_password",     :limit => 128,                :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
