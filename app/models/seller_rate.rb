@@ -1,6 +1,9 @@
 
 class SellerRate < ActiveRecord::Base
-  attr_accessible :valid_from, :valid_to, :country_id, :apply_to_id, :region_id, :prefix, :call_defination_id, :start_date, :rate_per_minute, :end_rate,  :call_per_second
+  attr_accessible :valid_from, :valid_to, :country_id, :apply_to_id, 
+    :region_id, :prefix, :call_defination_id,
+    :start_date, :rate_per_minute,
+    :end_rate,  :call_per_second, :start_rate
 
   validates :country_id, :presence => {:message => 'must be selected!'}
   validates :apply_to_id, :presence => {:message => 'must be selected!'}
