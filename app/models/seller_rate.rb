@@ -39,9 +39,9 @@ class SellerRate < ActiveRecord::Base
 
   def dates_must_not_overlap
     if self.new_record?
-      overlapping_rates = SellerRate.find(:all, :conditions => ["(? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)", self.valid_from, self.valid_from, self.valid_to, self.valid_to])
+      overlapping_rates = SellerRate.find(:all, :conditions => ["((? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)) and (country_id = ?)", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.country_id])
     else
-      overlapping_rates = SellerRate.find(:all, :conditions => ["((? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)) and id != ?", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.id])
+      overlapping_rates = SellerRate.find(:all, :conditions => ["((? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)) and id != ? and country_id = ?", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.id, self.country_id])
     end
 
 
