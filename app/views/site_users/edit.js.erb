@@ -1,44 +1,11 @@
-<div style="float: left;margin: 10px;">
+<div class="edit_form" >
   <h3>Change user settings</h3>
-
-  <%= form_for(@user, :url => "/site_users/update/#{@user.id}",:remote => true, :html => { :method => :post }) do |f| %>
-    <div style="float: left;width: 100%;" id="error_messages">
-      <%= render :partial => "/shared/error_messages", :locals => { :object => @user } %>
-    </div>
-
-
-    <div class="field" style="margin-bottom: 10px"><%= f.label :email %>
-      <%= f.email_field :email %>
-    </div>
-
-    <div class="field" style="margin-bottom: 10px"><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="field" style="margin-bottom: 10px"><%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-
-    <% if is_admin? %>
-      <div class="field" style="margin-bottom: 10px"><label for="group">Group</label>
-        <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name",:selected => @user.groups.blank? ? '' :@user.groups.first.id) %>
-      </div>
-
-      <div class="field" style="margin-bottom: 10px"><label for="group">Extensions</label>
-        <div style="float: left;width: auto;">
-          <% @extensions.each do|e| %>
-            <span style="padding-bottom: 5px;">
-              <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false %>
-            </span>
-            &nbsp;
-            <span style="padding-bottom: 5px;"><%= e.name %></span>
-            <br/>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    <div class="actions" style="margin-right: 177px;"><%= f.submit "Update" %></div>
-  <% end %>
-
-  <%= link_to "Back", :back %>
+  <%= render 'form' %>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    set_cursor('#user_email');
+  });
+</script>

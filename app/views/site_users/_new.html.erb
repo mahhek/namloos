@@ -1,0 +1,39 @@
+<div style="float: left;margin: 10px;">
+  <h3><%= "Register for Namloos" %></h3>
+
+  <%= form_for @user, :url => "/site_users/create",:remote => true do |f| %>
+    <div style="float: left;width: 100%;" id="error_messages">
+      <%= render :partial => "/shared/error_messages", :locals => { :object => @user } %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px"><%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px"><%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px"><%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px"><%= f.label :group %>
+      <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name") %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px"><label for="user_extension">Extensions</label>
+      <div style="float: left;width: auto;">
+        <% @extensions.each do|e| %>
+          <span style="padding-bottom: 5px;">
+            <%= check_box_tag "extensions[#{e.name}]", e.name,@user.extensions.include?(e)? true : false, :style => "margin-top:3px;" %>
+          </span>
+          &nbsp;
+          <span style="padding-bottom: 5px;"><%= e.name %></span>
+          <br/>
+        <% end %>
+      </div>
+    </div>
+    <div class="actions" style="margin-right: 177px;"><%= f.submit "Sign up" %></div>
+  <% end %>
+</div>

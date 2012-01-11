@@ -8,6 +8,7 @@ class SiteUsersController < ApplicationController
     @user = User.new
     @groups = Group.all
     @extensions = Extension.all
+    @user = User.new
   end
 
   def show    
