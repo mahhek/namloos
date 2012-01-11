@@ -3599,7 +3599,7 @@ form.edit_bank_mutation .document_suggestions p.no_results {
 }
 .contacts .list ul li a:hover {
     background: none repeat scroll 0 0 #E6E6E6;
-    color: #0066CC;
+    color: #0066CC;    
 }
 .contacts .list ul li a em {
     font-size: 10px;
@@ -6322,7 +6322,7 @@ div.content-container.settings ul.ledger_account_types p {
 }
 .settings_navigation ul li a:hover {
     background: none repeat scroll 0 0 #D9D9D9;
-    color: #0066CC;
+    color: #0066CC;    
 }
 .settings_navigation ul li em {
     color: #5A5A5A;
