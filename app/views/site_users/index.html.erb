@@ -2,17 +2,15 @@
 
 <div class="datatable" >
   <div class="datatable_header">
-    <span style="width: 400px;">Email</span>
+    <span style="width: 525px;">Email</span>
     <span style="width: 50px;">Edit</span>
-    <span style="width: 50px;">Delete</span>
-    <span style="width: 125px;">Assign Privileges</span>
+    <span style="width: 50px;">Delete</span>    
   </div>
   <% @users.each do |site_user| %>
     <div class="rows" id="site_user_<%= site_user.id %>">
-      <div class="row-column" style="width: 400px;"><%= site_user.email %></div>
+      <div class="row-column" style="width: 525px;"><%= site_user.email %></div>
       <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_site_user_path(site_user)}', '#site_user_#{site_user.id}' );", :class => "functional_link" %></div>
       <div class="row-column" style="width: 50px;"><%= link_to (image_tag 'trash.png'), "site_users/destroy/#{site_user.id}", :confirm => 'Are you sure?', :method => :delete %></div>
-      <div class="row-column" style="width: 125px;"><%= link_to 'Assign Privileges', "site_users/assign_privileges/#{site_user.id}" %></div>
     </div>
   <% end %>
 </div>

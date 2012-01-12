@@ -1,0 +1,18 @@
+<h3>Assign Privileges</h3>
+<p>
+  <b>Group Name:</b>
+  <%=h @group.name %>
+</p>
+<p>
+  <%= form_for @group, :url => "/groups/group_privileges/#{@group.id}" do|f| %>
+    <% @privileges.each do|p| %>
+    <div style="float: left;width: auto;float: left;">
+      <span style="float: left;margin-top: 3px;"><%= check_box_tag "privileges[#{p.name}]", p.name,@group.privileges.include?(p)? true : false %></span>
+      &nbsp;
+      <span style="float: left;margin-left: 5px;"><%= p.name %></span><br/>
+    </div>
+  <% end %>
+  <br />
+  <div class="actions" style="margin-right: 177px;"><%= f.submit "Assign" %></div>
+<% end %>
+</p>

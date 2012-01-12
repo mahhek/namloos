@@ -5,4 +5,7 @@ class Privilege < ActiveRecord::Base
   has_many :privilege_user
   has_many :users , :through => :privilege_user
 
+  has_many :group_privilege
+  has_many :groups , :through => :group_privilege
+
 end

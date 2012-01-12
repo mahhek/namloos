@@ -55,6 +55,22 @@ class GroupsController < ApplicationController
     end
   end
 
+  def assign_privileges
+    @group = Group.find(params[:id])
+    @privileges = Privilege.all
+  end
+
+  def group_privileges
+    group = Group.find(params[:id])
+    group.privileges.delete_all
+    params[:privileges].each do|p|
+      privilege = Privilege.find_by_name(p)
+      group.privileges << privilege
+    end
+    flash[:notice] = "Privileges Assigned successfully!"
+    redirect_to "/groups/assign_privileges/#{group.id}"
+  end
+
   def destroy
     @group = Group.find(params[:id])
     @group.destroy

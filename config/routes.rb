@@ -24,11 +24,13 @@ Namloos::Application.routes.draw do
   match '/get_countries/:region_id' => "countries#get_countries"
   
   match 'site_users/assign_privileges/:id' => 'site_users#assign_privileges'
+  match 'groups/assign_privileges/:id' => 'groups#assign_privileges'
   match 'site_users/create' => 'site_users#create'
   match 'site_users/show/:id' => 'site_users#show'
   match 'site_users/edit/:id' => 'site_users#edit'
   match 'site_users/update/:id' => 'site_users#update'
   match 'site_users/user_privileges/:id' => 'site_users#user_privileges'
+  match 'groups/group_privileges/:id' => 'groups#group_privileges'
   match 'site_users/destroy/:id' => 'site_users#destroy'
 
 
