@@ -4,7 +4,7 @@
   <table style="width: 100%">
     <tr>
       <td>
-        <div class="datatable_header" style="overflow: auto;width: 1500px;" >
+        <div class="datatable_header" style="overflow: auto;width: 1700px;" >
           <span style="width: 80px;float: left;">Company</span>
           <span style="width: 70px;float: left;">First name</span>
           <span style="width: 70px;float: left;">Last name</span>
@@ -14,12 +14,12 @@
           <span style="width: 50px;float: left;">Zip code</span>
           <span style="width: 70px;float: left;">City</span>
           <span style="width: 60px;float: left;">Country</span>
-          <span style="width: 120px;float: left;">Email</span>
-          <span style="width: 80px;float: left;">Phone</span>
+          <span style="width: 160px;float: left;">Email</span>
+          <span style="width: 120px;float: left;">Phone</span>
           <span style="width: 60px;float: left;">Client number</span>
-          <span style="width: 60px;float: left;">Tax number</span>
-          <span style="width: 80px;float: left;">Chamber of Commerce</span>
-          <span style="width: 60px;float: left;">Bank account</span>
+          <span style="width: 80px;float: left;">Tax number</span>
+          <span style="width: 120px;float: left;">Chamber of Commerce</span>
+          <span style="width: 90px;float: left;">Bank account</span>
           <span style="width: 70px;float: left;">Extensions</span>
           <span style="width: 60px;float: left;">Account code</span>
           <span style="width: 120px;float: left;">Rate classification</span>
@@ -29,7 +29,7 @@
 
 
         <% @customers.each do |customer| %>
-          <div class="rows"style=" overflow: auto;width: 1500px;" id="seller_rate_<%= customer.id %>" >
+          <div class="rows"style=" overflow: auto;width: 1700px;" id="seller_rate_<%= customer.id %>" >
             <div class="row-column" style="width: 80px;float: left;"><%= customer.company %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.first_name %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.last_name %></div>
@@ -39,12 +39,12 @@
             <div class="row-column" style="width: 50px;float: left;"><%= customer.zip_code %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.city %></div>
             <div class="row-column" style="width: 60px;float: left;"><%= customer.country %></div>
-            <div class="row-column" style="width: 120px;float: left;"><%= customer.email %></div>
-            <div class="row-column" style="width: 80px;float: left;"><%= customer.phone %></div>
+            <div class="row-column" style="width: 160px;float: left;"><%= customer.email %></div>
+            <div class="row-column" style="width: 120px;float: left;"><%= customer.phone %></div>
             <div class="row-column" style="width: 60px;float: left;"><%= customer.client_number %></div>
-            <div class="row-column" style="width: 60px;float: left;"><%= customer.tax_number %></div>
-            <div class="row-column" style="width: 80px;float: left;"><%= customer.coc %></div>
-            <div class="row-column" style="width: 60px;float: left;"><%= customer.bank_account %></div>
+            <div class="row-column" style="width: 80px;float: left;"><%= customer.tax_number %></div>
+            <div class="row-column" style="width: 120px;float: left;"><%= customer.coc %></div>
+            <div class="row-column" style="width: 90px;float: left;"><%= customer.bank_account %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.extensions %></div>
             <div class="row-column" style="width: 60px;float: left;"><%= customer.account_code %></div>
             <div class="row-column" style="width: 120px;float: left;"><%= customer.rate_class %></div>
