@@ -107,7 +107,7 @@
     <%= f.select :rate_class, options_from_collection_for_select(@apply_tos, :id, :name, @customer.rate_class), {:prompt => "Select Rate Classification"}, :style => "width:200px;" %>
   </div>
 
-  <div class="actions">
+  <div class="actions" >
     <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
     <%= link_to "Cancel", customers_path, :style => "color:blue;text-decoration:none;" %>
   </div>
