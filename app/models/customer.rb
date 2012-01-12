@@ -7,11 +7,7 @@ class Customer < ActiveRecord::Base
   validates :last_name, :presence => {:message => 'should be mentioned!'}
 
 
-
-
-
-
-  belongs_to :apply_to
+  belongs_to :apply_to, :foreign_key => "rate_class"
 
 
 end

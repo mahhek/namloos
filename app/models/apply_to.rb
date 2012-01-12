@@ -4,6 +4,6 @@ class ApplyTo < ActiveRecord::Base
 
   has_many :seller_rates
 
-  has_many :customers
+  has_many :customers, :foreign_key => "rate_class"
 
 end
