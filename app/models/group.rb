@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
 
   validates :name, :presence => {:message => ' must be selected!'}
+  validates :name, :uniqueness => {:message => ' already exists'}
 
   has_many :group_user
   has_many :users , :through=>:group_user
