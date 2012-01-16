@@ -92,9 +92,17 @@
     <%= f.text_field :bank_account %>
   </div>
 
-  <div class="field" style="margin-bottom: 5px;">
-    <%= f.label :extensions %>
-    <%= f.text_field :extensions %>
+  <div class="field" style="margin-bottom: 10px"><label for="group">Extensions</label>
+    <div style="float: left;width: auto;">
+      <% @extensions.each do|e| %>
+        <span style="padding-bottom: 5px;">
+          <%= check_box_tag "extensions[#{e.name}]", e.name,@customer.extensions.include?(e)? true : false %>
+        </span>
+        &nbsp;
+        <span style="padding-bottom: 5px;"><%= e.name %></span>
+        <br/>
+      <% end %>
+    </div>
   </div>
 
   <div class="field" style="margin-bottom: 5px;">
@@ -106,7 +114,7 @@
     <label> Rate Classification</label>
     <%= f.select :rate_class, options_from_collection_for_select(@apply_tos, :id, :name, @customer.rate_class), {:prompt => "Select Rate Classification"}, :style => "width:200px;" %>
   </div>
-
+  
   <div class="actions" >
     <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
     <%= link_to "Cancel", customers_path, :style => "color:blue;text-decoration:none;" %>

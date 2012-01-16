@@ -17,6 +17,7 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    @extensions = Extension.all
   end
 
 
@@ -31,6 +32,10 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        params[:extensions].each do|e|
+          extension = Extension.find_by_name(e)
+          @customer.extensions << extension
+        end
         flash[:notice] = "Contact created successfully!."
         format.js do
           render :js => "window.location='/customers'"
@@ -50,6 +55,10 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
+       params[:extensions].each do|e|
+          extension = Extension.find_by_name(e)
+          @customer.extensions << extension
+        end
         flash[:notice] = "Contact updated successfully!."
         format.js do
           render :js => "window.location='/customers'"

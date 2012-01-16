@@ -20,7 +20,9 @@
     <div class="field" style="margin-bottom: 10px"><label for="group">Group</label>
       <%= select_tag "role", options_from_collection_for_select(@groups, "id", "name",:selected => @user.groups.blank? ? '' :@user.groups.first.id) %>
     </div>
-
+    <div class="field" style="margin-bottom: 10px"><label for="group">Customer</label>
+      <%= select_tag "customer_id", options_from_collection_for_select(@customers, "id", "company",:selected => @user.customer.blank? ? '' :@user.customer_id) %>
+    </div>
     <div class="field" style="margin-bottom: 10px"><label for="group">Extensions</label>
       <div style="float: left;width: auto;">
         <% @extensions.each do|e| %>

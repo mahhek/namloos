@@ -8,6 +8,6 @@ class Customer < ActiveRecord::Base
 
 
   belongs_to :apply_to, :foreign_key => "rate_class"
-
-
+  has_and_belongs_to_many :extensions
+  has_many :users
 end

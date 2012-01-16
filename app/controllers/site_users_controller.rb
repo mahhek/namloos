@@ -7,7 +7,11 @@ class SiteUsersController < ApplicationController
     @users = User.all :order => 'created_at DESC'
     @user = User.new
     @groups = Group.all
-    @extensions = Extension.all
+    
+    @customers = Customer.all
+    unless @customers.blank?
+      @extensions = @customers.first.extensions
+    end
   end
 
   def show    
@@ -30,6 +34,7 @@ class SiteUsersController < ApplicationController
       else
         success = @user && @user.save
       end
+      
       unless params[:role].blank? && !params[:extensions].blank?
         @user.groups << Group.find(params[:role])
     
@@ -37,8 +42,13 @@ class SiteUsersController < ApplicationController
           extension = Extension.find_by_name(e)
           @user.extensions << extension
         end
-
       end
+      unless params[:customer_id].blank?
+        customer = Customer.find(params[:customer_id])
+        @user.customer = customer
+        @user.save
+      end
+
     end
 
     respond_to do |format|
@@ -59,7 +69,10 @@ class SiteUsersController < ApplicationController
   end
 
   def edit
-    @extensions = Extension.all
+    @customers = Customer.all
+    unless @customers.blank?
+      @extensions = @customers.first.extensions
+    end
     @groups = Group.all
     if is_admin?
       @user = User.find(params[:id])
@@ -82,13 +95,20 @@ class SiteUsersController < ApplicationController
     respond_to do |format|
       if @user.valid?
         if @user && @user.update_attributes(params[:user])
+          unless params[:customer_id].blank?
+            customer = Customer.find(params[:customer_id])
+            @user.customer = customer
+            @user.save
+          end
           if !params[:role].blank? && !params[:extensions].blank?
             @user.groups.delete_all
             @user.extensions.delete_all
       
             groups = Group.find(params[:role])
             @user.groups << groups
-
+            
+            
+            
             params[:extensions].each do|e|
               extension = Extension.find_by_name(e)
               @user.extensions << extension

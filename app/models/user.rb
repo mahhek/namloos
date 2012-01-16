@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
 
   has_many :extension_user
   has_many :extensions , :through => :extension_user
-
+  belongs_to :customer
 end

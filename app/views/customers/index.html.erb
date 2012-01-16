@@ -20,7 +20,6 @@
           <span style="width: 110px;float: left;">Tax number</span>
           <span style="width: 120px;float: left;">Chamber of Commerce</span>
           <span style="width: 90px;float: left;">Bank account</span>
-          <span style="width: 70px;float: left;">Extensions</span>
           <span style="width: 60px;float: left;">Account code</span>
           <span style="width: 80px;float: left;">Rate class</span>
           <span style="width: 40px;float: left;">Edit</span>
@@ -45,10 +44,8 @@
             <div class="row-column" style="width: 110px;float: left;"><%= customer.tax_number %></div>
             <div class="row-column" style="width: 120px;float: left;"><%= customer.coc %></div>
             <div class="row-column" style="width: 90px;float: left;"><%= customer.bank_account %></div>
-            <div class="row-column" style="width: 70px;float: left;"><%= customer.extensions %></div>
             <div class="row-column" style="width: 60px;float: left;"><%= customer.account_code %></div>
             <div class="row-column" style="width: 80px;float: left;"><%= customer.apply_to.name %></div>
-
             <div class="row-column"style="width: 60px;float: left;" ><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_customer_path(customer)}', '#seller_rate_#{customer.id}' )", :class => "functional_link"  %></div>
             <div class="row-column" ><%= link_to image_tag('trash.png'), customer_path(customer), :confirm =>'Are you sure?', :method => :delete %></div>
 
