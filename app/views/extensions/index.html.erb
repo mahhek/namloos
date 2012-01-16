@@ -1,0 +1,28 @@
+<h3>Extensions&nbsp;&nbsp;&nbsp;<%= link_to_function 'Add +', "set_cursor('#extension_name');", :class => "functional_link" %></h3>
+
+<div class="datatable" >
+  <div class="datatable_header">
+    <span style="width: 150px;">Name</span>
+    <span style="width: 100px;">Valid From</span>
+    <span style="width: 195px;">Valid To</span>
+    <span style="width: 50px;">Edit</span>
+    <span style="width: 50px;">Delete</span>
+
+  </div>
+
+  <% @extensions.each do |extension| %>
+
+    <div class="rows" id="extension_<%= extension.id%>">
+      <div class="row-column" style="width: 150px;"><%= extension.name %></div>
+      <div class="row-column" style="width: 100px;"><%= extension.valid_from.strftime("%d-%m-%Y") unless extension.valid_from.blank?%></div>
+      <div class="row-column" style="width: 200px;"><%= extension.valid_to.strftime("%d-%m-%Y") unless extension.valid_to.blank?%></div>
+      <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_extension_path(extension)}', '#extension_#{extension.id}' );", :class => "functional_link"  %></div>
+      <div class="row-column" style="width: 50px;"><%= link_to (image_tag 'trash.png'), extension, confirm: 'Are you sure?', method: :delete %></div>
+    </div>
+  <% end %>
+</div>
+
+<div class="add_form">
+  <h3>New Extension</h3>
+  <%= render 'form' %>
+</div>

@@ -6,6 +6,7 @@ class CustomersController < ApplicationController
     @customers = Customer.all:order => 'created_at DESC'
     @customer = Customer.new
     @apply_tos = ApplyTo.all
+    @extensions = Extension.all
   end
 
 
@@ -22,6 +23,7 @@ class CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
     @apply_tos = ApplyTo.all
+    @extensions = Extension.all
   end
 
   def create

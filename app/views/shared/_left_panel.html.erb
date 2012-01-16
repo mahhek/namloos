@@ -10,7 +10,8 @@
       <li class="<%= params[:controller] == 'countries' ? 'active' : '' %>"><%= link_to "Countries", countries_path, :style => "padding-left: 25px;"   %></li>
       <li class="<%= params[:controller] == 'apply_tos' ? 'active' : '' %>"><%= link_to "Customer Class", apply_tos_path, :style => "padding-left: 25px;"   %></li>
       <li class="<%= params[:controller] == 'regions' ? 'active' : '' %>"><%= link_to "Regions", regions_path, :style => "padding-left: 25px;"   %></li>
-      <li class="<%= params[:controller] == 'call_definations' ? 'active' : '' %>"><%= link_to "Call Definations", call_definations_path, :style => "padding-left: 25px;"   %></li>
+      <li class="<%= params[:controller] == 'call_definations' ? 'active' : '' %>"><%= link_to "Call Definitions", call_definations_path, :style => "padding-left: 25px;"   %></li>
+      <li class="<%= params[:controller] == 'extensions' ? 'active' : '' %>"><%= link_to "Extensions", extensions_path, :style => "padding-left: 25px;"   %></li>
     <% end %>
 
     <li class="<%= params[:controller] == 'site_users' ? 'active' : '' %>"><%= link_to "Users/Groups", site_users_path %></li>

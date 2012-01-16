@@ -19,7 +19,7 @@ Namloos::Application.routes.draw do
   resources :site_users
   resources :countries
   resources :regions
-
+  resources :extensions
   
   match '/get_countries/:region_id' => "countries#get_countries"
   

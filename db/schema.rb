@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111174835) do
+ActiveRecord::Schema.define(:version => 20120116080752) do
 
   create_table "apply_tos", :force => true do |t|
     t.string   "name"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20120111174835) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "valid_from"
+    t.date     "valid_to"
   end
 
   create_table "group_privileges", :force => true do |t|

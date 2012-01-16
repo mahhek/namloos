@@ -1,0 +1,31 @@
+<%= form_for(@extension, :remote =>  true) do |f| %>
+  <div style="float: left;width: 100%;" id="error_messages">
+    <%= render :partial => "/shared/error_messages", :locals => { :object => @extension } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :valid_from, 'Valid From' %>
+    <%= f.text_field :valid_from, :style => "width:200px;" %>
+  </div>
+
+  <div class="field" style="margin-bottom: 10px;">
+    <%= f.label :valid_to, 'Valid To' %>
+    <%= f.text_field :valid_to, :style => "width:200px;" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>&nbsp;&nbsp;or&nbsp;&nbsp;
+    <%= link_to "Cancel", extensions_path, :style => "color:blue;text-decoration:none;" %>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+  $('#extension_valid_from').datepick({ dateFormat: 'yyyy-mm-dd', showTrigger: '#calImg'});
+  $('#extension_valid_to').datepick({ dateFormat: 'yyyy-mm-dd', showTrigger: '#calImg'});  
+</script>
