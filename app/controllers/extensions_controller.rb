@@ -1,5 +1,5 @@
 class ExtensionsController < ApplicationController
-layout 'admin'
+  layout 'admin'
   before_filter :authenticate_user!
 
   def index
@@ -11,9 +11,21 @@ layout 'admin'
     @extension = Extension.find(params[:id])
   end
 
+  def get_extensions
+    @customer = Customer.find_by_id(params[:customer_id])
+    @extensions = @customer.extensions
+
+    respond_to do |format|
+      format.js do
+        foo = render_to_string(:partial => '/extensions/extensions', :locals => { :extensions => @extensions }).to_json
+        render :js => "$('#users_extensions').html(#{foo})"
+      end
+    end
+  end 
+
   def new
     @extension = Extension.new
-   render :layout =>false
+    render :layout =>false
   end
 
   def edit
@@ -55,7 +67,7 @@ layout 'admin'
     end
   end
 
-    def destroy
+  def destroy
     @extension = Extension.find(params[:id])
     @extension.destroy
     flash[:notice] = "Extension deleted successfully!"

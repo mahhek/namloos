@@ -8,6 +8,7 @@
           <span style="width: 80px;float: left;">Company</span>
           <span style="width: 70px;float: left;">First name</span>
           <span style="width: 70px;float: left;">Last name</span>
+          <span style="width: 100px;float: left;">Extensions</span>
           <span style="width: 50px;float: left;">Attn:</span>
           <span style="width: 60px;float: left;">Sending method</span>
           <span style="width: 80px;float: left;">Address</span>
@@ -32,6 +33,7 @@
             <div class="row-column" style="width: 80px;float: left;"><%= customer.company %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.first_name %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.last_name %></div>
+            <div class="row-column" style="width: 70px;float: left;"><%= customer.extensions.collect(&:name).to_sentence %></div>
             <div class="row-column" style="width: 50px;float: left;"><%= customer.attn %></div>
             <div class="row-column" style="width: 60px;float: left;"><%= customer.sending_method.humanize %></div>
             <div class="row-column" style="width: 80px;float: left;"><%= customer.address %></div>

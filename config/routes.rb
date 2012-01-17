@@ -22,6 +22,7 @@ Namloos::Application.routes.draw do
   resources :extensions
   
   match '/get_countries/:region_id' => "countries#get_countries"
+  match '/get_extensions/:customer_id' => "extensions#get_extensions"
   
   match 'site_users/assign_privileges/:id' => 'site_users#assign_privileges'
   match 'groups/assign_privileges/:id' => 'groups#assign_privileges'

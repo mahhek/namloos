@@ -9,6 +9,18 @@ class CustomersController < ApplicationController
     @extensions = Extension.all
   end
 
+  def get_extensions
+    @customer = Customer.find_by_id(params[:customer_id])
+    @extensiuon = @customer.extensions
+
+    respond_to do |format|
+      format.js do
+        foo = render_to_string(:partial => 'extensions', :locals => { :extensions => @extensions }).to_json
+        render :js => "$('#users_extensions').html(#{foo})"
+      end
+    end
+  end 
+
 
   def show
     @customer = Customer.find(params[:id])
@@ -55,7 +67,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-       params[:extensions].each do|e|
+        params[:extensions].each do|e|
           extension = Extension.find_by_name(e)
           @customer.extensions << extension
         end

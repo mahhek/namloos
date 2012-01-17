@@ -8,7 +8,7 @@ class SiteUsersController < ApplicationController
     @user = User.new
     @groups = Group.all
     
-    @customers = Customer.all
+    @customers = Customer.find(:all, :select => "id, company")
     unless @customers.blank?
       @extensions = @customers.first.extensions
     end
@@ -69,10 +69,6 @@ class SiteUsersController < ApplicationController
   end
 
   def edit
-    @customers = Customer.all
-    unless @customers.blank?
-      @extensions = @customers.first.extensions
-    end
     @groups = Group.all
     if is_admin?
       @user = User.find(params[:id])
@@ -84,6 +80,8 @@ class SiteUsersController < ApplicationController
         redirect_to "/"
       end
     end
+    @customers = Customer.all
+    @extensions = @user.customer.extensions    
   end
 
   def update

@@ -1,0 +1,11 @@
+<label for="group">Extensions</label>
+<div style="float: left;width: auto;">
+  <% extensions.each do|e| %>
+    <span style="padding-bottom: 5px;">
+      <%= check_box_tag "extensions[#{e.name}]", e.name, @user.nil? ? false : @user.extensions.include?(e)? true : false  %>
+    </span>
+    &nbsp;
+    <span style="padding-bottom: 5px;"><%= e.name %></span>
+    <br/>
+  <% end %>
+</div>
