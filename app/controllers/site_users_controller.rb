@@ -81,7 +81,8 @@ class SiteUsersController < ApplicationController
       end
     end
     @customers = Customer.all
-    @extensions = @user.customer.extensions    
+    @extensions = @user.customer.nil? ? Customer.first.extensions  : @user.customer.extensions
+    
   end
 
   def update

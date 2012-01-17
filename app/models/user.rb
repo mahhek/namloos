@@ -17,5 +17,5 @@ class User < ActiveRecord::Base
   has_many :extension_user
   has_many :extensions , :through => :extension_user
   belongs_to :customer
-  validates :customer_id, :presence => {:message => 'must be selected!'}
+
 end
