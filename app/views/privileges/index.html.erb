@@ -2,12 +2,14 @@
 
 <div class="datatable" >
   <div class="datatable_header">
-    <span style="width: 165px;">Privileges Types:</span>
+    <span style="width: 490px;">Privileges Types:</span>
+    <span style="width: 45px;">Edit</span>
+    <span style="width: 55px;">Delete</span>
   </div>
   <% @privileges.each do |privilege| %>
 
     <div class="rows" id="privilege_<%= privilege.id %>">
-      <div class="row-column" style="width: 550px;"><%= privilege.name %></div>
+      <div class="row-column" style="width: 500px;"><%= privilege.name %></div>
 
       <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_privilege_path(privilege)}', '#privilege_#{privilege.id}' );", :class => "functional_link"  %></div>
       <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), privilege, confirm: 'Are you sure?', method: :delete %></div>

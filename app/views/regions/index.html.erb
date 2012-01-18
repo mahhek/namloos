@@ -2,12 +2,14 @@
 
 <div class="datatable" >
   <div class="datatable_header">
-    <span style="width: 150px;">Region Name:</span>
+    <span style="width: 500px;">Region Name:</span>
+    <span style="width: 50px;">Edit</span>
+    <span style="width: 50px;">Delete</span>
   </div>
 
   <% @regions.each do |region| %>
     <div class="rows" id="region_<%= region.id %>">
-      <div class="row-column" style="width: 500px;"><%= region.name%></div>
+      <div class="row-column" style="width: 510px;"><%= region.name%></div>
       <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_region_path(region)}', '#region_#{region.id}' );", :class => "functional_link"  %></div>
       <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), region, confirm: 'Are you sure?', method: :delete %></div>
     </div>

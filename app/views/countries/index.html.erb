@@ -5,16 +5,18 @@
   <div class="datatable_header">
     <span style="width: 200px;">Region</span>
     <span style="width: 165px;">Name</span>
-    <span style="width: 165px;">Code </span>
+    <span style="width: 150px;">Code </span>
+    <span style="width: 40px;">Edit </span>
+    <span style="width: 40px;">Delete </span>
   </div>
 
   <% @countries.each do |country| %>
 
     <div class="rows" id="country_<%= country.id %>">
       <div class="row-column" style="width: 200px;"><%= country.region.name if country.region%></div>
-      <div class="row-column" style="width: 165px;"><%= country.name %></div>
-      <div class="row-column" style="width: 165px;"><%= country.code %></div>
-      <div class="row-column" style="width: 30px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_country_path(country)}', '#country_#{country.id}' );", :class => "functional_link"  %></div>
+      <div class="row-column" style="width: 170px;"><%= country.name %></div>
+      <div class="row-column" style="width: 155px;"><%= country.code %></div>
+      <div class="row-column" style="width: 40px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_country_path(country)}', '#country_#{country.id}' );", :class => "functional_link"  %></div>
       <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), country, confirm: 'Are you sure?', method: :delete %></div>
     </div>
   <% end %>
