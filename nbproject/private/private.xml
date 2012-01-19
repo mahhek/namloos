@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/hamid/namloos/app/views/seller_rates/_form.html.erb</file>
+        <file>file:/home/hamid/namloos/config/routes.rb</file>
+        <file>file:/home/hamid/namloos/app/views/layouts/admin.html.erb</file>
+        <file>file:/home/hamid/namloos/app/assets/javascripts/application.js</file>
+        <file>file:/home/hamid/namloos/app/controllers/seller_rates_controller.rb</file>
+        <file>file:/home/hamid/namloos/app/models/seller_rate.rb</file>
+        <file>file:/home/hamid/namloos/app/views/seller_rates/new.js.erb</file>
+        <file>file:/home/hamid/namloos/app/views/seller_rates/index.html.erb</file>
+        <file>file:/home/hamid/namloos/app/views/shared/_error_messages.html.erb</file>
+    </open-files>
 </project-private>

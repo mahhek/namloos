@@ -11,7 +11,7 @@ development:
   database: naamloos_development
   pool: 5
   username: root
-  password: 123
+  password: 
   host: localhost
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -34,3 +34,12 @@ production:
   username: root
   password: 123
   host: localhost
+
+cdr_fetching:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: asteriskcdrdb
+  pool: 5
+  username: root
+  password:

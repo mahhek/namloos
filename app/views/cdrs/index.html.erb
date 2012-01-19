@@ -1,0 +1,26 @@
+<h3>CDR Data</h3>
+
+<div class="datatable" >
+  <div class="datatable_header">
+    <span style="width: 280px;">Call Date</span>
+    <span style="width: 100px;">Start Time</span>
+    <span style="width: 110px;">CAll Group</span>
+    <span style="width: 40px;">Source</span>
+    <span style="width: 50px;">Destination On</span>
+    <span style="width: 50px;">Duration</span>
+    <span style="width: 50px;">Direction</span>
+    <span style="width: 50px;">Call Cost</span>
+  </div>
+  <% @cdrs.each do |cdr| %>
+    <div class="rows" id="site_user_<%= cdr.id %>">
+      <div class="row-column" style="width: 280px;"><%= cdr.calldate %></div>
+      <div class="row-column" style="width: 100px;"><%= cdr.dcontext %></div>
+      <div class="row-column" style="width: 115px;"><%= "callgroup" %></div>
+      <div class="row-column" style="width: 50px;"><%= cdr.src %></div>
+      <div class="row-column" style="width: 50px;"><%= cdr.dst %></div>
+      <div class="row-column" style="width: 50px;"><%= cdr.duration %></div>
+      <div class="row-column" style="width: 50px;"><%= "direction" %></div>
+      <div class="row-column" style="width: 50px;"><%= "cost" %></div>
+    </div>
+  <% end %>
+</div>

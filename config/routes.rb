@@ -7,6 +7,7 @@ Namloos::Application.routes.draw do
   resources :call_definations
 
   resources :callgroups
+  resources :cdrs
 
   resources :prefixes
 

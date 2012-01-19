@@ -8,8 +8,8 @@
     <%= f.email_field :email %>
   </div>
 
-  <div class="field" style="margin-bottom: 10px"><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-    <%= f.password_field :password %>
+  <div class="field" style="margin-bottom: 10px"><%= f.label :password %>
+    <%= f.password_field :password %>&nbsp;<i>(leave blank if you don't want to change it)</i>
   </div>
 
   <div class="field" style="margin-bottom: 10px"><%= f.label :password_confirmation %>
@@ -35,15 +35,15 @@
 
 <script type="text/javascript">
   $('#customer_id').change(function() {
-  var customer_id = $('#customer_id').val();
-  if (customer_id == '') {
-  return;
-  }
-  $.ajax({
-  type:"GET",
-  url: '/get_extensions/'+customer_id,
-  success: function (response) {
-  }
-  });
+    var customer_id = $('#customer_id').val();
+    if (customer_id == '') {
+      return;
+    }
+    $.ajax({
+      type:"GET",
+      url: '/get_extensions/'+customer_id,
+      success: function (response) {
+      }
+    });
   });
 </script> 

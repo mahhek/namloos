@@ -1,4 +1,3 @@
-
 class SellerRate < ActiveRecord::Base
   attr_accessible :valid_from, :valid_to, :country_id, :apply_to_id, 
     :region_id, :prefix, :call_defination_id,
