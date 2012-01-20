@@ -42,4 +42,4 @@ cdr_fetching:
   database: asteriskcdrdb
   pool: 5
   username: root
-  password:
+  password: 123
