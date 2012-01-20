@@ -2,13 +2,15 @@
 
 <div class="datatable" >
   <div class="datatable_header">
-    <span style="width: 150px;">Call Definition:</span>
+    <span style="width: 540px;">Call Definition:</span>
+    <span style="width: 50px;">Edit</span>
+    <span style="width: 30px;">Delete</span>
   </div>
 
   <% @call_definations.each do |call_defination| %>
 
     <div class="rows" id="call_defination_<%= call_defination.id %>">
-      <div class="row-column" style="width: 500px;"><%= call_defination.name%></div>
+      <div class="row-column" style="width: 550px;"><%= call_defination.name%></div>
       <div class="row-column" style="width: 50px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_call_defination_path(call_defination)}', '#call_defination_#{call_defination.id}' );", :class => "functional_link"  %></div>
       <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), call_defination, confirm: 'Are you sure?', method: :delete %></div>
     </div>
