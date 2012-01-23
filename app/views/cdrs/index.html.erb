@@ -3,25 +3,25 @@
 <div  class="datatable" >
   <table style="width: 100%">
     
-        <div class="datatable_header" style="width: 750px;" >
+        <div class="datatable_header" style="width: 900px;" >
           <span style="width: 170px;">Call Date</span>
-          <span style="width: 90px;">Start Time</span>
-          <span style="width: 75px;">Call Group</span>
-          <span style="width: 75px;">Source</span>
-          <span style="width: 90px;">Destination On</span>
+          <span style="width: 120px;">Start Time</span>
+          <span style="width: 85px;">Call Group</span>
+          <span style="width: 95px;">Source</span>
+          <span style="width: 140px;">Destination On</span>
           <span style="width: 50px;">Duration</span>
-          <span style="width: 55px;">Direction</span>
+          <span style="width: 75px;">Direction</span>
           <span style="width: 40px;">Call Cost</span>
         </div>
         <% @cdrs.each do |cdr| %>
-          <div class="rows"style=" width: 750px;" id="site_user_<%= cdr.id %>">
+          <div class="rows"style=" width: 900px;" id="site_user_<%= cdr.id %>">
             <div class="row-column" style="width: 170px;"><%= cdr.calldate %></div>
-            <div class="row-column" style="width: 90px;"><%= cdr.dcontext %></div>
-            <div class="row-column" style="width: 75px;"><%= "callgroup" %></div>
-            <div class="row-column" style="width: 75px;"><%= cdr.src %></div>
-            <div class="row-column" style="width: 90px;"><%= cdr.dst %></div>
+            <div class="row-column" style="width: 120px;"><%= cdr.dcontext %></div>
+            <div class="row-column" style="width: 85px;"><%= "callgroup" %></div>
+            <div class="row-column" style="width: 95px;"><%= cdr.src %></div>
+            <div class="row-column" style="width: 140px;"><%= cdr.dst %></div>
             <div class="row-column" style="width: 50px;"><%= cdr.duration %></div>
-            <div class="row-column" style="width: 55px;"><%= "direction" %></div>
+            <div class="row-column" style="width: 75px;"><%= "direction" %></div>
             <div class="row-column" style="width: 40px;"><%= "cost" %></div>
           </div>
         <% end %>
