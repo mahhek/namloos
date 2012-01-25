@@ -112,7 +112,7 @@
 
   <div class="field" style="margin-bottom: 5px;">
     <label> Rate Classification</label>
-    <%= f.select :rate_class, options_from_collection_for_select(@apply_tos, :id, :name, @customer.rate_class), {:prompt => "Select Rate Classification"}, :style => "width:200px;" %>
+    <%= f.select :apply_to_id, options_from_collection_for_select(@apply_tos, :id, :name, @customer.apply_to_id), {:prompt => "Select Rate Classification"}, :style => "width:200px;" %>
   </div>
   
   <div class="actions" >
