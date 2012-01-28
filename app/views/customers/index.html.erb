@@ -47,7 +47,7 @@
             <div class="row-column" style="width: 120px;float: left;"><%= customer.coc %></div>
             <div class="row-column" style="width: 90px;float: left;"><%= customer.bank_account %></div>
             <div class="row-column" style="width: 60px;float: left;"><%= customer.account_code %></div>
-            <div class="row-column" style="width: 88px;float: left;"><%= customer.apply_to.name %></div>
+            <div class="row-column" style="width: 88px;float: left;"><%= customer.apply_to.name if customer.apply_to %></div>
             <div class="row-column"style="width: 60px;float: left;" ><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_customer_path(customer)}', '#seller_rate_#{customer.id}' )", :class => "functional_link"  %></div>
             <div class="row-column" ><%= link_to image_tag('trash.png'), customer_path(customer), :confirm =>'Are you sure?', :method => :delete %></div>
 
