@@ -5,6 +5,7 @@ class CdrsController < ApplicationController
   def index
     @filter = params[:date_filter].nil? ? "this_month" :  params[:date_filter]
     dates = get_date_range(@filter)
+    
     @seller_rates = SellerRate.all :conditions => ["valid_from >= ? AND valid_to <= ? AND apply_to_id = ? ",
       dates[0], dates[1], current_user.business_class
     ]    

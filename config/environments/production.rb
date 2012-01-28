@@ -16,6 +16,7 @@ Namloos::Application.configure do
   #password: MahhekKhan2011 (change it if nesserary)
   # Compress JavaScripts and CSS
   config.assets.compress = true
+  config.assets.compile = true
 
   # Specify the default JavaScript compressor
   config.assets.js_compressor  = :uglifier
