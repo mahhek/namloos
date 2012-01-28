@@ -10,13 +10,14 @@ class CdrsController < ApplicationController
     ]    
     @cdrs = {}
     @seller_rates.each do |seller_rate|
-      cdr_records = Cdr.all :conditions => ["dst like ? ", "#{seller_rate.prefix}%"]
-      #            "accountcode = ? AND calldate BETWEEN  ? AND ? AND
-      #        ( dstchannel like ? OR dstchannel like ? ) #",
-      #      current_user.account_code,
-      #      dates[0].strftime("%Y-%m-%d"),
-      #      dates[1].strftime("%Y-%m-%d"),
-      #      "SIP/Voiceworks%","SIP/Voicetrading%"
+      cdr_records = Cdr.all :conditions => ["dst like ? AND accountcode = ? AND calldate BETWEEN  ? AND ? AND ( dstchannel like ? OR dstchannel like ? )",
+        "#{seller_rate.prefix}%",
+        current_user.account_code,
+        dates[0].strftime("%Y-%m-%d"),
+        dates[1].strftime("%Y-%m-%d"),
+        'SIP/Voiceworks%',
+        'SIP/Voicetrading%'
+      ]
       @cdrs[seller_rate.id] = cdr_records
     end
   end
