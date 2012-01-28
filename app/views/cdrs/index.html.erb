@@ -29,12 +29,14 @@
       <span style="width: 85px;">Direction</span>
       <span style="width: 40px;">Call Cost</span>
     </div>
+    <% total_call_cost = 0.to_f  %>
     <% @cdrs.each do |seller_rate_id, cdrs| %>
       <% cdrs.each do |cdr| %>
         <% seller_rate = SellerRate.find_by_id(seller_rate_id) %>
         <div class="rows"style=" width: 1060px;" id="site_user_<%= cdr.id %>">
           <div class="row-column" style="width: 70px;"><%= seller_rate.prefix %></div>
           <div class="row-column" style="width: 70px;"><%= ((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.duration.to_f).round(2) %></div>
+          <% total_call_cost = total_call_cost + ((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.duration.to_f).round(2) %>
           <div class="row-column" style="width: 170px;"><%= cdr.calldate.strftime("%Y-%m-%d") %></div>
           <div class="row-column" style="width: 120px;"><%= cdr.dcontext %></div>
           <div class="row-column" style="width: 85px;"><%= "callgroup" %></div>
@@ -46,6 +48,8 @@
         </div>
       <% end %>
     <% end %>
+    <hr/>
+    <b>Total Call Cost: &nbsp;<%= total_call_cost %></b>
 
   </table>
 </div>
