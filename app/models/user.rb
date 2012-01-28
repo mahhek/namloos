@@ -18,4 +18,12 @@ class User < ActiveRecord::Base
   has_many :extensions , :through => :extension_user
   belongs_to :customer
 
+  def account_code
+    self.customer.nil? ? nil : self.customer.account_code
+  end
+
+  def business_class
+    self.customer.nil? ? nil : self.customer.apply_to.nil? ? nil : self.customer.apply_to_id
+  end
+
 end

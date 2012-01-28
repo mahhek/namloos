@@ -11,6 +11,9 @@ Namloos::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
 
+  #IP: 109.70.5.212
+  #User: root
+  #password: MahhekKhan2011 (change it if nesserary)
   # Compress JavaScripts and CSS
   config.assets.compress = true
 

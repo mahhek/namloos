@@ -1,30 +1,51 @@
 <h3>CDR Data</h3>
 
+<%= form_tag cdrs_path, {:name => "date_range_form", :method => :get} do |f| %>
+
+  <%= select_tag "date_filter", options_for_select(
+    [["All calls of this month","this_month"],["All calls of previous month","last_month"],
+      ["All calls of this quarter","this_quarter"],["All calls of previous quarter", "last_quarter"],
+      ["All calls of this year", "this_year"],["All calls from last year", "last_year"]], @filter) ,
+    :style => "width:300px;",
+    :onchange => "date_range_form.submit();"
+%>
+
+<% end %>
+
+
+
 <div  class="datatable" >
-  <table style="width: 100%">
-    
-        <div class="datatable_header" style="width: 920px;" >
-          <span style="width: 170px;">Call Date</span>
-          <span style="width: 120px;">Start Time</span>
-          <span style="width: 85px;">Call Group</span>
-          <span style="width: 95px;">Source</span>
-          <span style="width: 140px;">Destination On</span>
-          <span style="width: 60px;">Duration</span>
-          <span style="width: 85px;">Direction</span>
-          <span style="width: 40px;">Call Cost</span>
+  <table>
+
+    <div class="datatable_header" style="width: 1060px;" >
+      <span style="width: 70px;">Prefix</span>
+      <span style="width: 70px;">Call Cost</span>
+      <span style="width: 170px;">Call Date</span>
+      <span style="width: 120px;">Start Time</span>
+      <span style="width: 85px;">Call Group</span>
+      <span style="width: 95px;">Source</span>
+      <span style="width: 140px;">Destination On</span>
+      <span style="width: 60px;">Duration</span>
+      <span style="width: 85px;">Direction</span>
+      <span style="width: 40px;">Call Cost</span>
+    </div>
+    <% @cdrs.each do |seller_rate_id, cdrs| %>
+      <% cdrs.each do |cdr| %>
+        <% seller_rate = SellerRate.find_by_id(seller_rate_id) %>
+        <div class="rows"style=" width: 1060px;" id="site_user_<%= cdr.id %>">
+          <div class="row-column" style="width: 70px;"><%= seller_rate.prefix %></div>
+          <div class="row-column" style="width: 70px;"><%= ((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.duration.to_f).round(2) %></div>
+          <div class="row-column" style="width: 170px;"><%= cdr.calldate.strftime("%Y-%m-%d") %></div>
+          <div class="row-column" style="width: 120px;"><%= cdr.dcontext %></div>
+          <div class="row-column" style="width: 85px;"><%= "callgroup" %></div>
+          <div class="row-column" style="width: 95px;"><%= cdr.src %></div>
+          <div class="row-column" style="width: 140px;"><%= cdr.dst %></div>
+          <div class="row-column" style="width: 60px;"><%= cdr.duration %></div>
+          <div class="row-column" style="width: 85px;"><%= "direction" %></div>
+          <div class="row-column" style="width: 40px;"><%= "cost" %></div>
         </div>
-        <% @cdrs.each do |cdr| %>
-          <div class="rows"style=" width: 920px;" id="site_user_<%= cdr.id %>">
-            <div class="row-column" style="width: 170px;"><%= cdr.calldate %></div>
-            <div class="row-column" style="width: 120px;"><%= cdr.dcontext %></div>
-            <div class="row-column" style="width: 85px;"><%= "callgroup" %></div>
-            <div class="row-column" style="width: 95px;"><%= cdr.src %></div>
-            <div class="row-column" style="width: 140px;"><%= cdr.dst %></div>
-            <div class="row-column" style="width: 60px;"><%= cdr.duration %></div>
-            <div class="row-column" style="width: 85px;"><%= "direction" %></div>
-            <div class="row-column" style="width: 40px;"><%= "cost" %></div>
-          </div>
-        <% end %>
-    
+      <% end %>
+    <% end %>
+
   </table>
 </div>
