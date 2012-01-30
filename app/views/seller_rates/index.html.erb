@@ -24,8 +24,8 @@
       <div class="row-column" style="width: 55px;"><%= seller_rate.rate_per_minute%></div>
       <div class="row-column" style="width: 30px;"><%= seller_rate.end_rate %></div>
       <div class="row-column" style="width: 30px;"><%= seller_rate.call_per_second %></div>
-      <div class="row-column" style="width: 80px;"><%= seller_rate.valid_from.strftime("%d-%m-%Y") unless seller_rate.valid_from.blank?%></div>
-      <div class="row-column" style="width: 90px;"><%= seller_rate.valid_to.strftime("%d-%m-%Y") unless seller_rate.valid_to.blank?%></div>
+      <div class="row-column" style="width: 80px;"><%= seller_rate.valid_from.strftime("%Y-%m-%d") unless seller_rate.valid_from.blank?%></div>
+      <div class="row-column" style="width: 90px;"><%= seller_rate.valid_to.strftime("%Y-%m-%d") unless seller_rate.valid_to.blank?%></div>
       <div class="row-column" style="width: 25px;"><%= link_to_function (image_tag 'edit-icon-small.gif'), "fetch_object('#{edit_seller_rate_path(seller_rate)}', '#seller_rate_#{seller_rate.id}' );", :class => "functional_link"  %></div>
       <div class="row-column" style="width: 30px;"><%= link_to (image_tag 'trash.png'), seller_rate, confirm: 'Are you sure?', method: :delete %></div>
     </div>

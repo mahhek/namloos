@@ -15,7 +15,8 @@ class SellerRate < ActiveRecord::Base
   validates :valid_from, :presence => {:message => 'must be specified!'}
   validates :valid_to, :presence => {:message => 'must be specified!'}
   validates :call_per_second, :presence => {:message => 'must be specified!'}
-  validates :apply_to_id, :uniqueness => {:scope => [:prefix, :valid_from, :valid_to], :message => "already exists with this combination of prefix, valid from and valid to!"}
+
+#  validates :callgroup, :uniqueness => {:scope => [:prefix, :valid_from, :valid_to], :message => "already exists with this combination of prefix, valid from and valid to!"}
 
   validate  :check_range
   validate  :dates_must_not_overlap
@@ -41,9 +42,9 @@ class SellerRate < ActiveRecord::Base
 
   def dates_must_not_overlap
     if self.new_record?
-      overlapping_rates = SellerRate.find(:all, :conditions => ["((? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)) and country_id = ? and call_defination_id = ?", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.country_id,self.call_defination_id])
+      overlapping_rates = SellerRate.find(:all, :conditions => ["((? >= valid_from and ? <= valid_to) or (? >= valid_from and ? <= valid_to)) and country_id = ? and call_defination_id = ? and prefix = ? ", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.country_id,self.call_defination_id, self.prefix])
     else
-      overlapping_rates = SellerRate.find(:all, :conditions => ["((? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)) and id != ? and country_id = ? and call_defination_id = ?", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.id, self.country_id,self.call_defination_id])
+      overlapping_rates = SellerRate.find(:all, :conditions => ["((? > valid_from and ? < valid_to) or (? > valid_from and ? < valid_to)) and id != ? and country_id = ? and call_defination_id = ? and prefix = ?", self.valid_from, self.valid_from, self.valid_to, self.valid_to, self.id, self.country_id,self.call_defination_id, self.prefix])
     end
 
 
