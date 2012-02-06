@@ -1,18 +1,45 @@
 <h3>CDR Data</h3>
 
-<%= form_tag cdrs_path, {:name => "date_range_form", :method => :get} do |f| %>
+<%= form_tag cdrs_path, {:name => "date_range_form", :method => :get } do |f| %>
+
+  <% if is_admin? %>
+    <%= select_tag "user", options_from_collection_for_select(@users, "id", "email",:selected => @user.id), :prompt => "Select User to see ralevant data.",
+      :onchange => "$('#date_from').val('');$('#date_from').val('');$('#advance_filter_chk').val('false');date_range_form.submit();"%>
+  <% end %>
 
   <%= select_tag "date_filter", options_for_select(
     [["All calls of this month","this_month"],["All calls of previous month","last_month"],
       ["All calls of this quarter","this_quarter"],["All calls of previous quarter", "last_quarter"],
       ["All calls of this year", "this_year"],["All calls from last year", "last_year"]], @filter) ,
     :style => "width:300px;",
-    :onchange => "date_range_form.submit();"
+    :onchange => "$('#date_from').val('');$('#date_from').val('');$('#advance_filter_chk').val('false');date_range_form.submit();"
 %>
+  <%= hidden_field_tag "advance_filter_chk", "false" %>
+  <br/><br/>
+  <%= link_to_function "Advance Filter", "$('#advance_filter').toggle();"  %>
+  <br/><br/>
+
+  <div style="float: left;width: 100%;display: none;" id="advance_filter">
+    <div style="margin-bottom: 10px;">
+      <span style="width: 75px;float: left;">
+        From: &nbsp;&nbsp;&nbsp;
+      </span>
+      <%= text_field_tag :date_from, @date_from, :style => "width:200px;" %>&nbsp;<%= link_to_function "clear", "$('#date_from').val('');"  %>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <span style="width: 75px;float: left;">
+        To: &nbsp;&nbsp;&nbsp;
+      </span>
+      <%= text_field_tag :date_to, @date_to, :style => "width:200px;" %>&nbsp;<%= link_to_function "clear", "$('#date_to').val('');"  %>
+    </div>
+
+    <%= submit_tag "Filter Data", :onclick => "return checkDateValues();" %>
+  </div>
+
+
 
 <% end %>
-
-
+<h3>&nbsp;</h3>
 
 <div  class="datatable" >
   <table>
@@ -48,8 +75,25 @@
         </div>
       <% end %>
     <% end %>
-    
+
     <b>Total Call Cost: &nbsp;<%= total_call_cost %></b>
 
   </table>
 </div>
+
+<script type="text/javascript">
+  $('#date_from').datepick({ dateFormat: 'yyyy-mm-dd', showTrigger: '#calImg'});
+  $('#date_to').datepick({ dateFormat: 'yyyy-mm-dd', showTrigger: '#calImg'});
+  function checkDateValues(){
+    $('#advance_filter_chk').val('true');
+    if($('#date_from').val() == ""){
+      alert('Please select Date From first.');
+      return false;
+    }
+    if($('#date_to').val() == ""){
+      alert('Please select Date To.');
+      return false;
+    }
+    return true;
+  }
+</script>
