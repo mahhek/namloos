@@ -20,22 +20,22 @@ class CdrsController < ApplicationController
       @dates = get_date_range(@filter)
     end
     
-    
     @seller_rates = SellerRate.all :conditions => ["apply_to_id = ? ", @user.business_class]
     @cdrs = {}
 
     p "*******************************"
     p @dates.inspect
-
+    
     @seller_rates.each do |seller_rate|
-      cdr_records = Cdr.all :conditions => ["billsec > 0 AND dst like ? AND accountcode = ? AND calldate BETWEEN  ? AND ? AND ( dstchannel like ? OR dstchannel like ? )",
+      cdr_records = Cdr.all :conditions => ["dst like ? AND accountcode = ? AND calldate BETWEEN  ? AND ? AND ( dstchannel like ? OR dstchannel like ? )",
         "#{seller_rate.prefix}%",
         @user.account_code,
         @dates[0].strftime("%Y-%m-%d"),
         @dates[1].strftime("%Y-%m-%d"),
         'SIP/Voiceworks%',
         'SIP/Voicetrading%'
-      ]
+      ], :order => "calldate"
+      
       @cdrs[seller_rate.id] = cdr_records
     end
   end
