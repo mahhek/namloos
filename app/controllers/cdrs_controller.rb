@@ -38,6 +38,29 @@ class CdrsController < ApplicationController
       
       @cdrs[seller_rate.id] = cdr_records
     end
+    @cdrs = remove_duplication @cdrs
   end
-  
+
+  def remove_duplication cdrs
+    cdrs.each do |key, array_values|
+     cdrs.each do |com_key, com_array_values|
+       unless key == com_key
+         array_values.each do |element|
+           com_array_values.each do |com_element|
+             if element.uniqueid == com_element.uniqueid
+                prefix = SellerRate.find_by_id(key).prefix
+                com_prefix = SellerRate.find_by_id(com_key).prefix
+                if prefix.length > com_prefix.length
+                  com_array_values.delete(com_element)
+                else
+                  array_values.delete(element)
+                end
+             end
+           end
+         end
+       end
+     end
+    end
+    return cdrs
+  end
 end
