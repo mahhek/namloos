@@ -750,7 +750,7 @@ body.wide_screen.document_editor #header #menu {
     width: 1072px;
 }
 #header {
-    background: url("header_background.png") repeat-x scroll 0 0 transparent;
+    background: url("/assets/header_background.png") repeat-x scroll 0 0 transparent;
     height: 35px;
     margin-bottom: 10px;
     min-width: 1002px;
