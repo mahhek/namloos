@@ -68,8 +68,8 @@
           <div class="row-column" style="width: 140px;"><%= cdr.dst %></div>
           <div class="row-column" style="width: 60px;"><%= convert_seconds_to_time(cdr.billsec) %></div>
           <div class="row-column" style="width: 90px;"><%= cdr.accountcode %></div>
-          <div class="row-column" style="width: 70px;"><%= number_with_precision(((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.duration.to_f), :precision => 3, :delimiter => ',') %></div>
-          <% total_call_cost = total_call_cost + ((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.duration.to_f).round(3) %>
+          <div class="row-column" style="width: 70px;"><%= number_with_precision(((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.billsec.to_f), :precision => 3, :delimiter => ',') %></div>
+          <% total_call_cost = total_call_cost + ((seller_rate.rate_per_minute.to_f / 60.to_f ) * cdr.billsec.to_f) %>
         </div>
       <% end %>
     <% end %>
