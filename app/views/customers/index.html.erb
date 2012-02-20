@@ -35,7 +35,7 @@
             <div class="row-column" style="width: 70px;float: left;"><%= customer.last_name %></div>
             <div class="row-column" style="width: 100px;float: left;"><%= customer.extensions.collect(&:name).to_sentence %></div>
             <div class="row-column" style="width: 50px;float: left;"><%= customer.attn %></div>
-            <div class="row-column" style="width: 60px;float: left;"><%= customer.sending_method.humanize %></div>
+            <div class="row-column" style="width: 60px;float: left;"><%= customer.sending_method.humanize unless customer.sending_method.blank?%></div>
             <div class="row-column" style="width: 80px;float: left;"><%= customer.address %></div>
             <div class="row-column" style="width: 50px;float: left;"><%= customer.zip_code %></div>
             <div class="row-column" style="width: 70px;float: left;"><%= customer.city %></div>
