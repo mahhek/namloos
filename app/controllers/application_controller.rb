@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
       return [Date.new(Date.today.year - 1,1).to_date,Date.new(Date.today.year,1,1).to_date]
     end
   end
-end
 
 
 
