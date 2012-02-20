@@ -22,32 +22,33 @@ class ApplicationController < ActionController::Base
     when "this_month"
       return [Date.today.beginning_of_month, Date.today.end_of_month]
     when "last_month"
-      return [(Date.today - 1.month).beginning_of_month, (Date.today - 1.month).end_of_month]
+      return [(Date.today - 1.month).beginning_of_month, (Date.today).beginning_of_month]
     when "this_quarter"
       return [Date.today.beginning_of_quarter, Date.today.end_of_quarter]
     when "last_quarter"
-      return [(Date.today - 3.months).beginning_of_quarter, (Date.today - 3.months).end_of_quarter]
+      return [(Date.today - 3.months).beginning_of_quarter, (Date.today - 3.months).end_of_quarter + 1.day]
     when "this_year"
       return [Date.new(Date.today.year,1).to_date,Date.new(Date.today.year,12,31).to_date]
     when "last_year"
       return [Date.new(Date.today.year - 1,1).to_date,Date.new(Date.today.year,1,1).to_date]
     end
   end
+end
 
 
 
-  #  protected
+#  protected
 
-  #  def current_user
-  #    @current_user ||= User.find_by_id(session[:user_id])
-  #  end
-  #
-  #  def require_login
-  #    redirect_to '/' if current_user.nil?
-  #  end
-  #
-  #  def require_admin
-  #    redirect_to '/' unless current_user.try(:admin?)
-  #  end
+#  def current_user
+#    @current_user ||= User.find_by_id(session[:user_id])
+#  end
+#
+#  def require_login
+#    redirect_to '/' if current_user.nil?
+#  end
+#
+#  def require_admin
+#    redirect_to '/' unless current_user.try(:admin?)
+#  end
 
 end
